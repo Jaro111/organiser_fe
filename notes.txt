@@ -1,0 +1,13 @@
+
+    <BrowserRouter basename="">
+      <Navbar />
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/aboutUs" element={<AboutUs />} />
+        <Route path="/pricing" element={<Pricing />} />
+      </Routes>
+      <Footer />
+      <SpeedInsights />
+      <Analytics />
+    </BrowserRouter>
