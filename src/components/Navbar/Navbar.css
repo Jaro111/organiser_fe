@@ -1,0 +1,10 @@
+.navbar-wrapper {
+  position: absolute;
+  top: 0px;
+  width: 94%;
+  height: 30px;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

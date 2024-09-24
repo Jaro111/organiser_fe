@@ -1,12 +1,23 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar/Navbar";
-import { Foter } from "./components/Footer/Footer";
+import { Footer } from "./components/Footer/Footer";
+import { Home } from "./pages/Home";
+import { Notifications } from "./pages/Notifications";
 
 import "./App.css";
 
 function App() {
-  return <BrowserRouter basename=""></BrowserRouter>;
+  return (
+    <BrowserRouter basename="">
+      <Navbar />
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="/notifications" element={<Notifications />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
 export default App;
