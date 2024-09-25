@@ -1,0 +1,29 @@
+.jobTab-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.addJob-wrapper {
+  width: 200px;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newJobInput {
+  width: 80px;
+}
+
+.addJobBtn {
+  font-size: 12px;
+  font-weight: 900;
+  background-color: black;
+  color: white;
+}

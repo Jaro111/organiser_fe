@@ -1,0 +1,12 @@
+.mainCentre-wrapper {
+  width: 98%;
+  border: 1px solid black;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
+.jobs-wrapper {
+  width: 100%;
+  height: 40px;
+  border: 1px solid green;
+}

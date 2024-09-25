@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { userContext } from "../../common/context";
 import { SignUp } from "../SignUp/SignUp";
 import { FaBell } from "react-icons/fa6";
 import { ModalSignUp } from "../SignUp/ModalSignUp/ModalSignUp";
@@ -9,9 +10,10 @@ import "./Navbar.css";
 export const Navbar = () => {
   const [isModalSignInVisible, setIsmodalSignInVisible] = useState(false);
 
+  const user = useContext(userContext).user;
+
   const clickSignUp = () => {
     setIsmodalSignInVisible(true);
-    console.log(isModalSignInVisible);
   };
   return (
     <div className="navbar-wrapper">

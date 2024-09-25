@@ -1,0 +1,25 @@
+.signUp-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.signUp-content {
+  margin: 0;
+  padding: 0 5px;
+}
+
+.signUpContent-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.signUp-username-content {
+  margin: 0;
+  padding: 0 5px;
+  color: brown;
+  font-weight: 800;
+}
