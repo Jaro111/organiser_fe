@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useReducer } from "react";
+import { useContext } from "react";
+import { userContext } from "../../../common/context";
 import { logIn } from "../../../utils/user";
 import { useState } from "react";
 
@@ -6,6 +8,8 @@ export const LogIn = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const setUser = useContext(userContext).setUser;
 
   const changeHandler = (e, setter, state) => {
     setter(e.target.value);
@@ -15,8 +19,8 @@ export const LogIn = (props) => {
     e.preventDefault();
     const data = await logIn(username, password);
     console.log(data);
+    setUser(data);
     props.setIsmodalSignInVisible(false);
-    props.setOwner(data.username);
   };
 
   return (

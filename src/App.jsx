@@ -12,18 +12,16 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState({});
-  const [owner, setOwner] = useState(undefined);
 
   const logInWithToken = async (token) => {
     const persUser = await authCheck(token);
-    console.log("persUser: ", persUser.user);
+    persUser.user["token"] = token;
     setUser(persUser.user);
   };
 
   useEffect(() => {
     if (document.cookie) {
       let token = Cookies.get("jwt-token");
-      console.log("jwt token", token);
       if (token === false) {
         setUser({});
       } else {
@@ -40,7 +38,7 @@ function App() {
       }}
     >
       <BrowserRouter basename="">
-        <Navbar owner={owner} setOwner={setOwner} />
+        <Navbar />
         <Routes>
           <Route path="" element={<Home />} />
           <Route path="/notifications" element={<Notifications />} />

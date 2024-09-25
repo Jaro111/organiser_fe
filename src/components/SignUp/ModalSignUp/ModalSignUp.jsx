@@ -15,10 +15,7 @@ export const ModalSignUp = (props) => {
           <IoMdClose onClick={() => setIsmodalSignInVisible(false)} />
         </div>
         <div className="modalSignUpContent-wrapper">
-          <LogIn
-            setIsmodalSignInVisible={setIsmodalSignInVisible}
-            setOwner={setOwner}
-          />
+          <LogIn setIsmodalSignInVisible={setIsmodalSignInVisible} />
           <Register />
         </div>
       </div>

@@ -6,7 +6,7 @@ const url = import.meta.env.VITE_URL;
 
 export const signUp = async (username, email, password) => {
   console.log(url);
-  const res = await fetch(`${url}user/addUser`, {
+  const res = await fetch(`${url}/user/addUser`, {
     method: "POST",
     mode: "cors",
     headers: {
@@ -27,7 +27,7 @@ export const signUp = async (username, email, password) => {
 // Log In
 
 export const logIn = async (username, password) => {
-  const res = await fetch(`${url}user/logIn`, {
+  const res = await fetch(`${url}/user/logIn`, {
     method: "POST",
     mode: "cors",
     headers: {
@@ -46,7 +46,7 @@ export const logIn = async (username, password) => {
 };
 
 export const authCheck = async (jwt) => {
-  const res = await fetch(`${url}user/authCheck`, {
+  const res = await fetch(`${url}/user/authCheck`, {
     method: "GET",
     headers: {
       "Content-Type": "application-json",

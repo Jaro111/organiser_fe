@@ -7,7 +7,7 @@ import { ModalSignUp } from "../SignUp/ModalSignUp/ModalSignUp";
 
 import "./Navbar.css";
 
-export const Navbar = ({ owner, setOwner }) => {
+export const Navbar = () => {
   const [isModalSignInVisible, setIsmodalSignInVisible] = useState(false);
 
   const user = useContext(userContext).user;
@@ -20,14 +20,11 @@ export const Navbar = ({ owner, setOwner }) => {
       <div className="leftNav">
         <p>TO DO ORGANISER</p>
         {isModalSignInVisible && (
-          <ModalSignUp
-            setOwner={setOwner}
-            setIsmodalSignInVisible={setIsmodalSignInVisible}
-          />
+          <ModalSignUp setIsmodalSignInVisible={setIsmodalSignInVisible} />
         )}
       </div>
       <div className="rightNav">
-        <SignUp clickSignUp={clickSignUp} owner={owner} setOwner={setOwner} />
+        <SignUp clickSignUp={clickSignUp} />
         <div>
           <FaBell />
         </div>
