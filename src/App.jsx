@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import { authCheck } from "./utils/user";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { userContext } from "./common/context";
 import { Navbar } from "./components/Navbar/Navbar";
@@ -10,6 +12,26 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState({});
+  const [owner, setOwner] = useState(undefined);
+
+  const logInWithToken = async (token) => {
+    const persUser = await authCheck(token);
+    console.log("persUser: ", persUser.user);
+    setUser(persUser.user);
+  };
+
+  useEffect(() => {
+    if (document.cookie) {
+      let token = Cookies.get("jwt-token");
+      console.log("jwt token", token);
+      if (token === false) {
+        setUser({});
+      } else {
+        logInWithToken(token, setUser);
+      }
+    }
+  }, []);
+
   return (
     <userContext.Provider
       value={{
@@ -18,7 +40,7 @@ function App() {
       }}
     >
       <BrowserRouter basename="">
-        <Navbar />
+        <Navbar owner={owner} setOwner={setOwner} />
         <Routes>
           <Route path="" element={<Home />} />
           <Route path="/notifications" element={<Notifications />} />

@@ -41,5 +41,20 @@ export const logIn = async (username, password) => {
 
   const data = await res.json();
   const userData = data.user;
+  Cookies.set("jwt-token", userData.token, { expires: 7, path: "/" });
   return userData;
+};
+
+export const authCheck = async (jwt) => {
+  const res = await fetch(`${url}user/authCheck`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application-json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  const data = await res.json();
+  console.log(data);
+  return data;
 };

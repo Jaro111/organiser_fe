@@ -2,7 +2,7 @@ import React from "react";
 import { logIn } from "../../../utils/user";
 import { useState } from "react";
 
-export const LogIn = () => {
+export const LogIn = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +15,8 @@ export const LogIn = () => {
     e.preventDefault();
     const data = await logIn(username, password);
     console.log(data);
+    props.setIsmodalSignInVisible(false);
+    props.setOwner(data.username);
   };
 
   return (
