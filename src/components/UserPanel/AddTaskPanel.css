@@ -1,0 +1,12 @@
+.addTaskPanel-wrapper {
+  margin-top: 20px;
+  width: 50px;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.newTask-input {
+  width: 80px;
+}

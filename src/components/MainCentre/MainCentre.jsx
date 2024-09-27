@@ -3,6 +3,7 @@ import { getAllJobs } from "../../utils/job";
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../common/context";
 import { JobTabs } from "../JobTabs/JobTabs";
+import { JobCentre } from "../JobCentre/JobCentre";
 import "./MainCentre.css";
 
 export const MainCentre = () => {
@@ -15,9 +16,14 @@ export const MainCentre = () => {
 
   const fetchJobs = async () => {
     const data = await getAllJobs(user.token);
-    setJobsLength(data.jobsLength);
     console.log(data);
+    setJobsLength(data.jobsLength);
     setJobs(data);
+    if (mainJobId.length === 0) {
+      setTimeout(() => {
+        setMainJobId(data[0]._id);
+      }, 1000);
+    }
   };
 
   useEffect(() => {
@@ -36,8 +42,7 @@ export const MainCentre = () => {
           jobs={jobs}
         />
       </div>
-
-      <p>{mainJobId}</p>
+      <JobCentre mainJobId={mainJobId} />
     </div>
   );
 };
