@@ -11,12 +11,13 @@ export const JobCentre = (props) => {
   const [users, setUsers] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [jobId, setJobId] = useState("");
-
+  const [tempTaskUser, setTempTaskUser] = useState({});
   const [taskLength, setTaskLength] = useState(0);
 
   const fetchJobDetails = async () => {
     if (props.mainJobId.length > 0) {
       const data = await getJobDetils(props.mainJobId, user.token);
+      console.log(data);
       setUsers(data.job.users);
       setTasks(data.job.task);
       setJobId(data.job.id);
@@ -29,7 +30,7 @@ export const JobCentre = (props) => {
 
   useEffect(() => {
     fetchJobDetails();
-  }, [props.mainJobId, taskLength]);
+  }, [props.mainJobId, taskLength, tempTaskUser]);
 
   return (
     <div className="jobCentre-wrapper">
@@ -43,6 +44,9 @@ export const JobCentre = (props) => {
             jobId={jobId}
             taskLength={taskLength}
             setTaskLength={setTaskLength}
+            users={users}
+            tempTaskUser={tempTaskUser}
+            setTempTaskUser={setTempTaskUser}
           />
         );
       })}

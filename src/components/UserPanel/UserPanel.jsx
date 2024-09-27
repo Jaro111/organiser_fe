@@ -10,6 +10,9 @@ export const UserPanel = (props) => {
   const jobId = props.jobId;
   const taskLength = props.taskLength;
   const setTaskLength = props.setTaskLength;
+  const users = props.users;
+  const tempTaskUser = props.tempTaskUser;
+  const setTempTaskUser = props.setTempTaskUser;
 
   return (
     <div className="userPanel-wrapper">
@@ -24,7 +27,16 @@ export const UserPanel = (props) => {
           setTaskLength={setTaskLength}
           tasks={tasks}
         />
-        <TasksPanel tasks={tasks} userId={userId} />
+        <TasksPanel
+          tasks={tasks}
+          userId={userId}
+          users={users}
+          jobId={jobId}
+          taskLength={taskLength}
+          setTaskLength={setTaskLength}
+          tempTaskUser={tempTaskUser}
+          setTempTaskUser={setTempTaskUser}
+        />
       </>
     </div>
   );

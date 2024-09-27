@@ -20,15 +20,19 @@ export const AddTaskPanel = (props) => {
   //   };
 
   const clickAdd = async (e) => {
-    e.preventDefault();
-    const data = await addTask(
-      props.userId,
-      props.jobId,
-      taskTitle,
-      user.token
-    );
-    props.setTaskLength(props.tasks.length + 1);
-    setTaskTitle("");
+    if (taskTitle === "") {
+      console.log("click");
+    } else {
+      e.preventDefault();
+      const data = await addTask(
+        props.userId,
+        props.jobId,
+        taskTitle,
+        user.token
+      );
+      props.setTaskLength(props.tasks.length + 1);
+      setTaskTitle("");
+    }
   };
 
   return (
