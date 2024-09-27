@@ -32,3 +32,21 @@ export const addNewJob = async (token, title) => {
   const data = await res.json();
   return data;
 };
+
+// get users and job details by id
+
+export const getJobDetils = async (jobId, token) => {
+  const res = await fetch(`${url}/job/getJobDetails`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jobId: jobId,
+    }),
+  });
+
+  const data = res.json();
+  return data;
+};

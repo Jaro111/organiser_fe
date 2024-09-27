@@ -1,0 +1,15 @@
+.taskPanel-wrappeer {
+  border: 1px solid green;
+  border-radius: 15px;
+  margin-top: 20px;
+  width: 98%;
+  min-height: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.taskTitle-content {
+  margin: 1px;
+}
