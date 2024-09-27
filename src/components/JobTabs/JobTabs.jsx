@@ -15,9 +15,19 @@ export const JobTabs = (props) => {
   };
 
   const addJob = async () => {
-    const newJob = await addNewJob(user.token, props.newJobTitle);
-    props.setJobsLength(props.jobs.length + 1);
+    if (props.newJobTitle === "") {
+      console.log("click");
+    } else {
+      const newJob = await addNewJob(user.token, props.newJobTitle);
+      props.setJobsLength(props.jobs.length + 1);
+    }
   };
+
+  // const pressEnter = (e) => {
+  //   if (e.keyCode === 13 || e.which === 13) {
+  //     console.log("enter");
+  //   }
+  // };
 
   const changeJob = (item) => {
     props.setMainJobId(item._id);
@@ -42,6 +52,7 @@ export const JobTabs = (props) => {
               className="newJobInput"
               onChange={(e) => changeHandler(e)}
               placeholder="new Job Title"
+              onKeyPress={(e) => console.log(e)}
             ></input>
             <button className="addJobBtn" onClick={addJob}>
               ADD
@@ -54,6 +65,7 @@ export const JobTabs = (props) => {
             className="newJobInput"
             onChange={(e) => changeHandler(e)}
             placeholder="new Job Title"
+            onKeyPress={(e) => console.log(e)}
           ></input>
           <button className="addJobBtn" onClick={addJob}>
             ADD

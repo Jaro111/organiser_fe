@@ -1,0 +1,35 @@
+.updateTaskModal-wrapper {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.705);
+  width: 150px;
+  min-height: 150px;
+  border: 1px solid grey;
+  left: 10%;
+}
+
+.updateTaskModal-close-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  color: rgb(94, 255, 0);
+}
+
+.updateTaskModal-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.updateModalContent-title {
+  color: red;
+}
+
+.updateModalContent-title:hover {
+  background-color: blue;
+  cursor: pointer;
+}
+
+.updateModalContent,
+.updateModalContent-title {
+  margin: 1px;
+}

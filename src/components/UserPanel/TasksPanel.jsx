@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaRegWindowClose } from "react-icons/fa";
+import { UpdateTaskModal } from "./updateTaskModal";
 import "./TasksPanel.css";
 
 export const TasksPanel = (props) => {
   //
-
-  const editTask = (item) => {};
+  const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
+  const [tempTask, setTempTask] = useState({});
+  const taskClick = (item) => {
+    setIsTaskModalVisible(!isTaskModalVisible);
+    setTempTask(item);
+  };
+  const users = props.users;
+  const userId = props.userId;
+  const jobId = props.jobId;
+  const tempTaskUser = props.tempTaskUser;
+  const setTempTaskUser = props.setTempTaskUser;
 
   return (
     <div className="taskPanel-wrappeer">
@@ -13,7 +24,7 @@ export const TasksPanel = (props) => {
             if (item.userId === props.userId) {
               return (
                 <p
-                  onClick={() => editTask(item)}
+                  onClick={() => taskClick(item)}
                   className="taskTitle-content"
                   key={index}
                 >
@@ -23,7 +34,18 @@ export const TasksPanel = (props) => {
             }
           })
         : null}
-      <p></p>
+      {isTaskModalVisible && (
+        <UpdateTaskModal
+          setIsTaskModalVisible={setIsTaskModalVisible}
+          tempTask={tempTask}
+          users={users}
+          userId={userId}
+          jobId={jobId}
+          tempTaskUser={tempTaskUser}
+          setTempTaskUser={setTempTaskUser}
+          isTaskModalVisible={isTaskModalVisible}
+        />
+      )}
     </div>
   );
 };

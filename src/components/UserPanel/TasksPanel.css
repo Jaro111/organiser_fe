@@ -1,4 +1,5 @@
 .taskPanel-wrappeer {
+  position: relative;
   border: 1px solid green;
   border-radius: 15px;
   margin-top: 20px;
@@ -12,4 +13,9 @@
 
 .taskTitle-content {
   margin: 1px;
+  cursor: pointer;
+}
+
+.taskTitle-content:hover {
+  background-color: red;
 }
