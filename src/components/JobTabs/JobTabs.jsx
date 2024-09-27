@@ -16,7 +16,7 @@ export const JobTabs = (props) => {
 
   const addJob = async () => {
     const newJob = await addNewJob(user.token, props.newJobTitle);
-    props.setJobsLength(props.jobsLength + 1);
+    props.setJobsLength(props.jobs.length + 1);
   };
 
   const changeJob = (item) => {

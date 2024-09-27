@@ -16,8 +16,6 @@ export const MainCentre = () => {
 
   const fetchJobs = async () => {
     const data = await getAllJobs(user.token);
-    console.log(data);
-    setJobsLength(data.jobsLength);
     setJobs(data);
     if (mainJobId.length === 0) {
       setTimeout(() => {

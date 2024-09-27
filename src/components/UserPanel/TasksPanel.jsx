@@ -4,29 +4,25 @@ import "./TasksPanel.css";
 export const TasksPanel = (props) => {
   //
 
-  const editTask = (item) => {
-    console.log(item.taskTitle);
-  };
+  const editTask = (item) => {};
 
   return (
     <div className="taskPanel-wrappeer">
-      {props.tasks.length > 0 ? (
-        props.tasks.map((item, index) => {
-          if (item.userId === props.userId) {
-            return (
-              <p
-                onClick={() => editTask(item)}
-                className="taskTitle-content"
-                key={index}
-              >
-                {item.taskTitle}
-              </p>
-            );
-          }
-        })
-      ) : (
-        <p>Loading...</p>
-      )}
+      {props.tasks.length > 0
+        ? props.tasks.map((item, index) => {
+            if (item.userId === props.userId) {
+              return (
+                <p
+                  onClick={() => editTask(item)}
+                  className="taskTitle-content"
+                  key={index}
+                >
+                  {item.taskTitle}
+                </p>
+              );
+            }
+          })
+        : null}
       <p></p>
     </div>
   );
