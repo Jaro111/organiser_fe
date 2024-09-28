@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { addTask } from "../../utils/task";
+import { pressEnter } from "../../common";
 import { useContext } from "react";
 import { userContext } from "../../common/context";
+
 import "./AddTaskPanel.css";
 
 export const AddTaskPanel = (props) => {
@@ -23,7 +25,6 @@ export const AddTaskPanel = (props) => {
     if (taskTitle === "") {
       console.log("click");
     } else {
-      e.preventDefault();
       const data = await addTask(
         props.userId,
         props.jobId,
@@ -42,8 +43,9 @@ export const AddTaskPanel = (props) => {
         placeholder="New Task"
         onChange={(e) => handleSubmit(e)}
         value={taskTitle}
+        onKeyDown={(e) => pressEnter(e, clickAdd)}
       ></input>
-      <button className="addTask-btn" onClick={(e) => clickAdd(e)}>
+      <button className="addTask-btn" onClick={(e) => clickAdd()}>
         Add
       </button>
     </div>
