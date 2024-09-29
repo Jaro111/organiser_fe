@@ -45,6 +45,7 @@ export const logIn = async (username, password) => {
   return userData;
 };
 
+// Authorization
 export const authCheck = async (jwt) => {
   const res = await fetch(`${url}/user/authCheck`, {
     method: "GET",
@@ -57,4 +58,20 @@ export const authCheck = async (jwt) => {
   const data = await res.json();
   console.log(data);
   return data;
+};
+
+// get all users
+
+export const getAllUsers = async (token) => {
+  const res = await fetch(`${url}/user/getAll`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application-json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await res.json();
+  const userData = data.users;
+  return userData;
 };

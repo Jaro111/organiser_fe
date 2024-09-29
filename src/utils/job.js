@@ -50,3 +50,20 @@ export const getJobDetils = async (jobId, token) => {
   const data = await res.json();
   return data;
 };
+
+export const inViteToJob = async (jobId, invitedUserId, token) => {
+  const res = await fetch(`${url}/job/inviteToJob`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jobId: jobId,
+      invitedUserId: invitedUserId,
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};
