@@ -1,13 +1,31 @@
-
-    <BrowserRouter basename="">
-      <Navbar />
-      <Routes>
-        <Route path="" element={<Home />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/aboutUs" element={<AboutUs />} />
-        <Route path="/pricing" element={<Pricing />} />
-      </Routes>
-      <Footer />
-      <SpeedInsights />
-      <Analytics />
-    </BrowserRouter>
+ const handleChange = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setSearchInput(value);
+    let myList = [];
+    if (value.length > 2) {
+      allCoins.filter((item, index) => {
+        if (
+          // item.name.toLowerCase().includes(searchInput) ||
+          // item.symbol.toLowerCase().includes(searchInput)
+          value.slice(0, value.length) ===
+            item.name.toLowerCase().slice(0, value.length) ||
+          value.slice(0, value.length) ===
+            item.symbol.toLowerCase().slice(0, value.length)
+        ) {
+          myList.push(item);
+        } else if (
+          value.slice(0, value.length) !==
+            item.name.toLowerCase().slice(0, value.length) ||
+          value.slice(0, value.length) !==
+            item.symbol.toLowerCase().slice(0, value.length)
+        ) {
+          myList.splice(index, 1);
+        }
+        {
+          setSuggestions([]);
+        }
+      });
+      setSuggestions(myList.slice(0, 10));
+    } else setSuggestions([]);
+  };

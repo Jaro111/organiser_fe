@@ -1,0 +1,16 @@
+.searchBar-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.serchInput-wrapper {
+  position: relative;
+  height: 20px;
+}
+
+.searchInput {
+  height: 100%;
+  width: 120px;
+}

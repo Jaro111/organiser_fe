@@ -3,6 +3,7 @@ import { getJobDetils } from "../../utils/job";
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../common/context";
 import { UserPanel } from "../UserPanel/UserPanel";
+import { SearchBar } from "../SearchBar/SearchBar";
 import "./JobCentre.css";
 
 export const JobCentre = (props) => {
@@ -17,7 +18,7 @@ export const JobCentre = (props) => {
   const fetchJobDetails = async () => {
     if (props.mainJobId.length > 0) {
       const data = await getJobDetils(props.mainJobId, user.token);
-      console.log(data);
+      // console.log(data);
       setUsers(data.job.users);
       setTasks(data.job.task);
       setJobId(data.job.id);
@@ -34,22 +35,25 @@ export const JobCentre = (props) => {
 
   return (
     <div className="jobCentre-wrapper">
-      {users.map((item, index) => {
-        return (
-          <UserPanel
-            key={index}
-            username={item.username}
-            userId={item._id}
-            tasks={tasks}
-            jobId={jobId}
-            taskLength={taskLength}
-            setTaskLength={setTaskLength}
-            users={users}
-            tempTaskUser={tempTaskUser}
-            setTempTaskUser={setTempTaskUser}
-          />
-        );
-      })}
+      <SearchBar jobId={jobId} users={users} />
+      <div className="users-wrapper">
+        {users.map((item, index) => {
+          return (
+            <UserPanel
+              key={index}
+              username={item.username}
+              userId={item._id}
+              tasks={tasks}
+              jobId={jobId}
+              taskLength={taskLength}
+              setTaskLength={setTaskLength}
+              users={users}
+              tempTaskUser={tempTaskUser}
+              setTempTaskUser={setTempTaskUser}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

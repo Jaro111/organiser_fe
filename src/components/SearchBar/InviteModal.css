@@ -1,0 +1,49 @@
+.inviteModal-wrapper {
+  border: 2px solid rgb(0, 0, 0);
+  position: absolute;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.705);
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inviteModalContent {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 13px;
+}
+.inviteName-content {
+  color: aqua;
+}
+
+.invitedMessage-content {
+  font-weight: 900;
+  color: rgb(151, 247, 151);
+}
+
+.inviteModalDecisionContent-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.confirmInvite-content:hover,
+.declineInvite-content:hover {
+  cursor: pointer;
+}
+
+.confirmInvite-content:hover {
+  background-color: green;
+}
+
+.declineInvite-content:hover {
+  background-color: red;
+}

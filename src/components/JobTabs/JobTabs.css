@@ -1,20 +1,23 @@
 .jobTab-wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+}
+
+.jobTabs-Wrapper {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: row;
   box-sizing: border-box;
   flex-wrap: wrap;
 }
 
 .addJob-wrapper {
-  width: 200px;
+  width: 100%;
   height: 70%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
 }
 
 .newJobInput {
