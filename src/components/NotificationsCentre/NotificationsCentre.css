@@ -1,0 +1,54 @@
+.notificationsCentre-wrapper {
+  margin-top: 70px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.allNotifications-wrapper {
+  width: 90%;
+  height: fit-content;
+}
+
+.notification-content-wraper {
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+  border-bottom: 1px solid grey;
+  width: 80%;
+  margin: 0 0 30px 0;
+}
+
+.invItemsTitle-content {
+  color: rgb(148, 29, 75);
+  font-weight: 700;
+  margin: 1px 10px 1px 10px;
+}
+
+.invItemsUsername-content {
+  color: rgb(247, 104, 104);
+  font-weight: 700;
+  margin: 1px 10px 1px 10px;
+}
+
+.invItemsAccept-content,
+.invItemsReject-content {
+  margin: 1px 10px 1px 10px;
+}
+
+.invItemsAccept-content:hover,
+.invItemsReject-content:hover {
+  background-color: blue;
+  cursor: pointer;
+}
+
+.invItemsAccept-content {
+  color: green;
+  font-weight: 900;
+}
+
+.invItemsReject-content {
+  color: red;
+  font-weight: 800;
+}

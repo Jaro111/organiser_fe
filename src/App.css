@@ -10,3 +10,7 @@
 p {
   margin: 1px;
 }
+
+a.active {
+  display: none;
+}

@@ -24,5 +24,7 @@
 .appName-content:hover,
 .notificationIcon:hover {
   cursor: pointer;
-  background-color: green;
+  background-color: rgb(61, 255, 61);
+  color: black;
+  width: fit-content;
 }

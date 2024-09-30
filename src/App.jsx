@@ -12,6 +12,7 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState({});
+  const [newNtf, setNewNtf] = useState(0);
 
   const logInWithToken = async (token) => {
     const persUser = await authCheck(token);

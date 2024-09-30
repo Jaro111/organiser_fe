@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { useState, useContext } from "react";
 import { userContext } from "../../common/context";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +22,7 @@ export const Navbar = () => {
   const navigateToPage = (path) => {
     navigate(path);
   };
+
   return (
     <div className="navbar-wrapper">
       <div className="leftNav">
