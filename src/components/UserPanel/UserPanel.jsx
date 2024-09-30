@@ -36,6 +36,8 @@ export const UserPanel = (props) => {
           setTaskLength={setTaskLength}
           tempTaskUser={tempTaskUser}
           setTempTaskUser={setTempTaskUser}
+          taskStatus={props.taskStatus}
+          setTaskStatus={props.setTaskStatus}
         />
       </>
     </div>

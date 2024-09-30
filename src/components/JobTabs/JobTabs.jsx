@@ -36,7 +36,11 @@ export const JobTabs = (props) => {
           <div className="jobTabs-Wrapper">
             {props.jobs.map((item, index) => {
               return (
-                <button onClick={() => changeJob(item)} key={index}>
+                <button
+                  className="jobTab-btn"
+                  onClick={() => changeJob(item)}
+                  key={index}
+                >
                   {item.title}
                 </button>
               );

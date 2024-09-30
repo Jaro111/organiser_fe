@@ -45,9 +45,40 @@ export const updateTask = async (
   return data;
 };
 
-// {
-//   "jobId": "66f4432e931adb1ebccf3ea2",
-//   "taskId": "66f570678759a29dc146d24b",
-//   "whatToUpdate": "userId",
-//   "update": "66f2ec7ccebaa7a5a11d8680"
-// }
+// update task status
+
+export const updateTaskStatus = async (jobId, taskId, token) => {
+  const res = await fetch(`${url}/task/updateTaskStatus`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jobId: jobId,
+      taskId: taskId,
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};
+
+// delete task
+
+export const deleteTask = async (jobId, taskId, token) => {
+  const res = await fetch(`${url}/task/deleteTask`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jobId: jobId,
+      taskId: taskId,
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};

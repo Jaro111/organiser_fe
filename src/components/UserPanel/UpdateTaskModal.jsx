@@ -27,9 +27,9 @@ export const UpdateTaskModal = (props) => {
         <FaRegWindowClose onClick={() => props.setIsTaskModalVisible(false)} />;
       </div>
       <div className="updateTaskModal-content-wrapper">
-        <p className="updateModalContent-title">{props.tempTask.taskTitle}</p>
-        <p className="updateModalContent">Rename</p>
-        <p className="updateModalContent">Reassign to:</p>
+        <p>{props.tempTask.taskTitle}</p>
+        {/* <p className="updateModalContent">Rename</p> */}
+        <p className="updateModalContent">{"-->"}</p>
         {props.users.map((item, index) => {
           if (props.userId !== item._id) {
             return (
