@@ -19,7 +19,6 @@ export const SearchBar = (props) => {
   //
   const fetchUsers = async () => {
     const data = await getAllUsers(user.token);
-    console.log(data);
     setAllUsers(data);
     const myList = [];
     users.map((user) => {
@@ -43,7 +42,6 @@ export const SearchBar = (props) => {
           if (item._id !== user.id) myList.push(item);
         } else setSuggestions([]);
       });
-      console.log(myList);
       setSuggestions(myList);
     } else setSuggestions([]);
   };

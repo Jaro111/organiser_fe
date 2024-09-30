@@ -51,6 +51,7 @@ export const getJobDetils = async (jobId, token) => {
   return data;
 };
 
+// invite user to job
 export const inViteToJob = async (jobId, invitedUserId, token) => {
   const res = await fetch(`${url}/job/inviteToJob`, {
     method: "POST",
@@ -67,3 +68,53 @@ export const inViteToJob = async (jobId, invitedUserId, token) => {
   const data = await res.json();
   return data;
 };
+
+// get all user invitations
+export const getInvitations = async (token, userId) => {
+  const res = await fetch(`${url}/job/checkInvitations`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId: userId,
+    }),
+  });
+
+  const data = await res.json();
+  const jobData = data.job;
+  return jobData;
+};
+
+// accept invitation
+
+export const acceptInvitation = async (token, jobId) => {
+  const res = await fetch(`${url}/job/acceptInvitation`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jobId: jobId,
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};
+
+// export const getAllJobs = async (token) => {
+//   const res = await fetch(`${url}/job/getJobByUser`, {
+//     method: "GET",
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//       "Content-Type": "application/json",
+//     },
+//   });
+
+//   const data = await res.json();
+//   const jobData = data.allJobs;
+//   return jobData;
+// };

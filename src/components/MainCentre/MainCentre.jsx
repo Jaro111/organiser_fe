@@ -17,10 +17,12 @@ export const MainCentre = () => {
   const fetchJobs = async () => {
     const data = await getAllJobs(user.token);
     setJobs(data);
-    if (mainJobId.length === 0) {
-      setTimeout(() => {
-        setMainJobId(data[0]._id);
-      }, 1000);
+    if (data.length > 0) {
+      if (mainJobId.length === 0) {
+        setTimeout(() => {
+          setMainJobId(data[0]._id);
+        }, 1000);
+      }
     }
   };
 
