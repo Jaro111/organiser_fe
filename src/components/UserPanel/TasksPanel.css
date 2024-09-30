@@ -11,11 +11,61 @@
   box-sizing: border-box;
 }
 
+.task-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  width: fit-content;
+}
+.taskItems-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  width: fit-content;
+  margin: 1px 2px 1px 2px;
+}
 .taskTitle-content {
   margin: 1px;
   cursor: pointer;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .taskTitle-content:hover {
   background-color: red;
+}
+
+.checkTask-icon {
+  color: green;
+}
+
+.checkTask-icon,
+.binTask-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.checkTask-icon:hover {
+  color: rgb(255, 0, 0);
+}
+
+.binTask-icon {
+  color: red;
+}
+
+.binTask-icon:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.arrowTask-Icon {
+  width: 22px;
+  height: 22px;
+  color: blue;
+}
+
+.arrowTask-Icon:hover {
+  color: rgb(226, 3, 255);
 }

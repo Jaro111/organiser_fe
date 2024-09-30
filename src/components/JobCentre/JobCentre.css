@@ -3,11 +3,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
 }
 
 .users-wrapper {
-  border: 1px solid red;
   /* position: relative; */
   margin-top: 30px;
   width: 100%;
@@ -17,4 +15,11 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.jobCentre-jobTitle {
+  font-size: 25px;
+  font-weight: 800;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(0, 0, 88);
 }

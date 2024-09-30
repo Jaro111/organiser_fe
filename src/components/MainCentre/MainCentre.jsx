@@ -12,6 +12,7 @@ export const MainCentre = () => {
   const [newJobTitle, setNewJobTitle] = useState("");
   const [jobsLength, setJobsLength] = useState(0);
   const [mainJobId, setMainJobId] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
   const [jobs, setJobs] = useState([]);
 
   const fetchJobs = async () => {
@@ -28,7 +29,7 @@ export const MainCentre = () => {
 
   useEffect(() => {
     fetchJobs();
-  }, [jobsLength]);
+  }, [jobsLength, jobTitle]);
 
   return (
     <div className="mainCentre-wrapper">
@@ -42,7 +43,12 @@ export const MainCentre = () => {
           jobs={jobs}
         />
       </div>
-      <JobCentre mainJobId={mainJobId} />
+
+      <JobCentre
+        mainJobId={mainJobId}
+        jobTitle={jobTitle}
+        setJobTitle={setJobTitle}
+      />
     </div>
   );
 };

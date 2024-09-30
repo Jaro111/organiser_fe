@@ -1,21 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { userContext } from "../../common/context";
+import { updateTaskStatus } from "../../utils/task";
+import { deleteTask } from "../../utils/task";
 import { FaRegWindowClose } from "react-icons/fa";
 import { UpdateTaskModal } from "./updateTaskModal";
+import { FaCheckCircle } from "react-icons/fa";
+import { IoArrowRedo } from "react-icons/io5";
+import { ImBin } from "react-icons/im";
 import "./TasksPanel.css";
 
 export const TasksPanel = (props) => {
+  const user = useContext(userContext).user;
   //
   const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
   const [tempTask, setTempTask] = useState({});
-  const taskClick = (item) => {
-    setIsTaskModalVisible(!isTaskModalVisible);
-    setTempTask(item);
-  };
+  //
+
   const users = props.users;
   const userId = props.userId;
   const jobId = props.jobId;
   const tempTaskUser = props.tempTaskUser;
   const setTempTaskUser = props.setTempTaskUser;
+  //
+  const taskClick = (item) => {
+    console.log(item);
+    if (!item.status) setIsTaskModalVisible(!isTaskModalVisible);
+    setTempTask(item);
+  };
+  //
+  const changeTaskStatus = async (item) => {
+    props.setTaskStatus(item.status);
+    const data = await updateTaskStatus(jobId, item._id, user.token);
+    console.log(data);
+    props.setTaskStatus(data.task.status);
+  };
+
+  const removeTask = async (item) => {
+    const data = await deleteTask(jobId, item._id, user.token);
+    console.log(data);
+    props.setTaskLength(props.tasks.length + -1);
+  };
 
   return (
     <div className="taskPanel-wrappeer">
@@ -23,13 +47,37 @@ export const TasksPanel = (props) => {
         ? props.tasks.map((item, index) => {
             if (item.userId === props.userId) {
               return (
-                <p
-                  onClick={() => taskClick(item)}
-                  className="taskTitle-content"
-                  key={index}
-                >
-                  {item.taskTitle}
-                </p>
+                <div key={index} className="task-wrapper">
+                  <div className="taskItems-wrapper">
+                    <p
+                      className="taskTitle-content"
+                      style={{
+                        textDecoration: !item.status ? "none" : "line-through",
+                        fontWeight: !item.status ? "700" : "500",
+                        color: !item.status ? "black" : "rgb(155, 29, 29)",
+                      }}
+                      onClick={() => changeTaskStatus(item)}
+                    >
+                      {item.taskTitle}
+                    </p>
+                  </div>
+                  {item.in}
+                  <div className="taskItems-wrapper">
+                    <IoArrowRedo
+                      className="arrowTask-Icon"
+                      onClick={() => taskClick(item)}
+                    />
+                  </div>
+                  {/* <div className="taskItems-wrapper">
+                    <FaCheckCircle className="checkTask-icon" />
+                  </div> */}
+                  <div className="taskItems-wrapper">
+                    <ImBin
+                      className="binTask-icon"
+                      onClick={() => removeTask(item)}
+                    />
+                  </div>
+                </div>
               );
             }
           })
