@@ -50,11 +50,11 @@ export const TasksPanel = (props) => {
                 <div key={index} className="task-wrapper">
                   <div className="taskItems-wrapper">
                     <p
-                      className="taskTitle-content"
+                      className="taskPanelTitle-content"
                       style={{
                         textDecoration: !item.status ? "none" : "line-through",
                         fontWeight: !item.status ? "700" : "500",
-                        color: !item.status ? "black" : "rgb(155, 29, 29)",
+                        color: !item.status ? "green" : "red",
                       }}
                       onClick={() => changeTaskStatus(item)}
                     >

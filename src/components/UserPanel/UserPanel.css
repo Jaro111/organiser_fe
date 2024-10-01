@@ -1,12 +1,24 @@
 .userPanel-wrapper {
-  border: 1px solid red;
-  min-width: 300px;
+  border: 1px solid rgb(4, 0, 255);
+  background-color: rgb(162, 162, 231);
+  border-radius: 10px;
+  min-width: 450px;
+  min-height: 700px;
   height: fit-content;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 30px;
 }
 
 .username-btn {
-  min-width: 50px;
+  margin-top: 20px;
+  min-width: 100px;
+  min-height: 50px;
+  font-size: 23px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  background-color: rgb(108, 125, 199);
+  color: rgb(196, 178, 248);
+  border-radius: 10px;
 }

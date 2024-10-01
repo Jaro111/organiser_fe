@@ -1,10 +1,11 @@
 .taskPanel-wrappeer {
   position: relative;
-  border: 1px solid green;
+  border: 3px solid rgb(125, 116, 253);
+  background-color: rgb(219, 217, 241);
   border-radius: 15px;
   margin-top: 20px;
   width: 98%;
-  min-height: 150px;
+  min-height: 550px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -26,15 +27,16 @@
   width: fit-content;
   margin: 1px 2px 1px 2px;
 }
-.taskTitle-content {
+.taskPanelTitle-content {
   margin: 1px;
   cursor: pointer;
   font-size: 22px;
   font-weight: 700;
+  color: green;
 }
 
 .taskTitle-content:hover {
-  background-color: red;
+  background-color: rgb(181, 125, 233);
 }
 
 .checkTask-icon {
@@ -52,18 +54,17 @@
 }
 
 .binTask-icon {
-  color: red;
+  color: rgb(0, 0, 0);
 }
 
 .binTask-icon:hover {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  color: rgb(255, 0, 0);
 }
 
 .arrowTask-Icon {
-  width: 22px;
-  height: 22px;
-  color: blue;
+  width: 25px;
+  height: 25px;
+  color: rgb(31, 172, 238);
 }
 
 .arrowTask-Icon:hover {

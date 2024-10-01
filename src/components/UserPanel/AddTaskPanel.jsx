@@ -46,7 +46,7 @@ export const AddTaskPanel = (props) => {
         onKeyDown={(e) => pressEnter(e, clickAdd)}
       ></input>
       <button className="addTask-btn" onClick={(e) => clickAdd()}>
-        Add
+        +
       </button>
     </div>
   );
