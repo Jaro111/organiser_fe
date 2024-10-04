@@ -12,8 +12,8 @@ export const SearchBar = (props) => {
   const [allUsers, setAllUsers] = useState([]);
   const [invitedUsersArray, setInvitedUsersArray] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
+  const [suggestionslength, seTsuggestionsLength] = useState(0);
   const [searchInput, setSearchInput] = useState("");
-  const [idinvitedUsersString, setIdinvitedUsersString] = useState("");
   const jobId = props.jobId;
   const users = props.users;
   //
@@ -40,10 +40,17 @@ export const SearchBar = (props) => {
           value.slice(0, value.length)
         ) {
           if (item._id !== user.id) myList.push(item);
-        } else setSuggestions([]);
+        } else {
+          setSuggestions([]);
+          seTsuggestionsLength(0);
+        }
       });
       setSuggestions(myList);
-    } else setSuggestions([]);
+      seTsuggestionsLength(myList.length);
+    } else {
+      setSuggestions([]);
+      seTsuggestionsLength(0);
+    }
   };
   //
   useEffect(() => {
@@ -63,7 +70,7 @@ export const SearchBar = (props) => {
           onChange={(e) => handleChange(e)}
           value={searchInput}
         ></input>
-        {suggestions.length > 0 && (
+        {suggestionslength > 0 && (
           <SuggestionList
             suggestions={suggestions}
             jobId={jobId}

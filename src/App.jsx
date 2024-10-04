@@ -12,7 +12,7 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState({});
-  const [newNtf, setNewNtf] = useState(0);
+  const [numberOfInv, setNumberOfInv] = useState(0);
 
   const logInWithToken = async (token) => {
     const persUser = await authCheck(token);
@@ -29,7 +29,7 @@ function App() {
         logInWithToken(token, setUser);
       }
     }
-  }, []);
+  }, [numberOfInv]);
 
   return (
     <userContext.Provider
@@ -39,9 +39,14 @@ function App() {
       }}
     >
       <BrowserRouter basename="">
-        <Navbar />
+        <Navbar numberOfInv={numberOfInv} setNumberOfInv={setNumberOfInv} />
         <Routes>
-          <Route path="" element={<Home />} />
+          <Route
+            path=""
+            element={
+              <Home numberOfInv={numberOfInv} setNumberOfInv={setNumberOfInv} />
+            }
+          />
           <Route path="/notifications" element={<Notifications />} />
         </Routes>
         <Footer />

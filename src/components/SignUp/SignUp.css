@@ -3,11 +3,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  margin-left: 30px;
 }
 
 .signUp-content {
   margin: 0;
   padding: 0 5px;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .signUpContent-wrapper {
@@ -19,7 +22,8 @@
 
 .signUp-username-content {
   margin: 0;
-  padding: 0 5px;
+  padding: 0 50px;
   color: brown;
   font-weight: 800;
+  font-size: 25px;
 }

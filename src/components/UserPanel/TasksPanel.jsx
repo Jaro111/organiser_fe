@@ -1,10 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { userContext } from "../../common/context";
 import { updateTaskStatus } from "../../utils/task";
 import { deleteTask } from "../../utils/task";
-import { FaRegWindowClose } from "react-icons/fa";
 import { UpdateTaskModal } from "./updateTaskModal";
-import { FaCheckCircle } from "react-icons/fa";
 import { IoArrowRedo } from "react-icons/io5";
 import { ImBin } from "react-icons/im";
 import "./TasksPanel.css";
@@ -14,6 +12,7 @@ export const TasksPanel = (props) => {
   //
   const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
   const [tempTask, setTempTask] = useState({});
+
   //
 
   const users = props.users;
@@ -21,6 +20,9 @@ export const TasksPanel = (props) => {
   const jobId = props.jobId;
   const tempTaskUser = props.tempTaskUser;
   const setTempTaskUser = props.setTempTaskUser;
+
+  //
+
   //
   const taskClick = (item) => {
     console.log(item);
