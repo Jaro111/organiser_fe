@@ -56,7 +56,6 @@ export const authCheck = async (jwt) => {
   });
 
   const data = await res.json();
-  console.log(data);
   return data;
 };
 

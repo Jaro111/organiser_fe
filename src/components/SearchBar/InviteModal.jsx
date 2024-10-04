@@ -7,7 +7,7 @@ import "./InviteModal.css";
 export const InviteModal = (props) => {
   //
   const user = useContext(userContext).user;
-  const [invitedMessage, setInvitedMessage] = useState("");
+  const [invitedMessage, setInvitedMessage] = useState(null);
 
   const inviteUser = async () => {
     const data = await inViteToJob(
@@ -15,19 +15,25 @@ export const InviteModal = (props) => {
       props.userToInvite._id,
       user.token
     );
-    console.log(data);
-    setInvitedMessage(data.message);
+
+    if (data.message) {
+      setInvitedMessage(data.message);
+    }
   };
 
   const confirmInvite = () => {
     console.log(props.jobId);
     inviteUser();
+    setTimeout(() => {
+      props.setIsInviteModalVisible(false);
+      setInvitedMessage(null);
+    }, 1500);
   };
 
   return (
     <div className="inviteModal-wrapper">
       <div className="inviteModalContent">
-        {invitedMessage.length > 0 ? (
+        {invitedMessage ? (
           <p className="invitedMessage-content">{invitedMessage}</p>
         ) : (
           <>

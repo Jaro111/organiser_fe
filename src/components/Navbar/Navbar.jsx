@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { useState, useContext } from "react";
 import { userContext } from "../../common/context";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +8,7 @@ import { ModalSignUp } from "../SignUp/ModalSignUp/ModalSignUp";
 
 import "./Navbar.css";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
   const [isModalSignInVisible, setIsmodalSignInVisible] = useState(false);
 
   const user = useContext(userContext).user;
@@ -23,6 +22,8 @@ export const Navbar = () => {
     navigate(path);
   };
 
+  useEffect(() => {}, [props.numberOfInv]);
+
   return (
     <div className="navbar-wrapper">
       <div className="leftNav">
@@ -35,12 +36,18 @@ export const Navbar = () => {
       </div>
       <div className="rightNav">
         <SignUp clickSignUp={clickSignUp} />
-        <div>
-          <FaBell
-            className="notificationIcon"
-            onClick={() => navigateToPage("/notifications")}
-          />
-        </div>
+
+        {user.username ? (
+          <div className="notificationIcon-wrapper">
+            <FaBell
+              className="notificationIcon"
+              onClick={() => navigateToPage("/notifications")}
+            />
+            <div className="notificationIcon-conten-wrapper">
+              <p className="notificationIcon-content">{props.numberOfInv}</p>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

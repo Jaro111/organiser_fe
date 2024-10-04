@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { AddTaskPanel } from "./AddTaskPanel";
 import { TasksPanel } from "./TasksPanel";
 
@@ -14,9 +15,23 @@ export const UserPanel = (props) => {
   const tempTaskUser = props.tempTaskUser;
   const setTempTaskUser = props.setTempTaskUser;
 
+  const colorFunc = () => {
+    const colors = ["pink", "orange", "lightgrey", "lightblue", "lightviolet"];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    return randomColor;
+  };
+
+  colorFunc();
+
   return (
     <div className="userPanel-wrapper">
-      <button className="username-btn">
+      <button
+        style={{
+          backgroundColor:
+            userId === props.owner ? " rgb(6, 185, 6)" : colorFunc(),
+        }}
+        className="username-btn"
+      >
         <p>{props.username}</p>
       </button>
       <>
@@ -27,6 +42,7 @@ export const UserPanel = (props) => {
           setTaskLength={setTaskLength}
           tasks={tasks}
         />
+
         <TasksPanel
           tasks={tasks}
           userId={userId}

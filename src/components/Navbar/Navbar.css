@@ -2,26 +2,47 @@
   position: absolute;
   top: 0px;
   width: 94%;
-  height: 30px;
+  height: 50px;
   border-bottom: 2px solid black;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   z-index: 900;
 }
 
 .leftNav {
-  width: 80%;
+  width: fit-content;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .rightNav {
+  width: fit-content;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 20%;
+  justify-content: flex-end;
 }
 
-.appName-content:hover,
+.notificationIcon-wrapper {
+  display: flex;
+  margin-right: 30px;
+}
+.notificationIcon {
+  width: 30px;
+  height: 30px;
+  color: green;
+}
+
+.notificationIcon-conten-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+.notificationIcon-content {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
 .notificationIcon:hover {
   cursor: pointer;
   background-color: rgb(61, 255, 61);

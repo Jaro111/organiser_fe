@@ -1,31 +1,33 @@
- const handleChange = (e) => {
-    e.preventDefault();
-    const value = e.target.value;
-    setSearchInput(value);
-    let myList = [];
-    if (value.length > 2) {
-      allCoins.filter((item, index) => {
-        if (
-          // item.name.toLowerCase().includes(searchInput) ||
-          // item.symbol.toLowerCase().includes(searchInput)
-          value.slice(0, value.length) ===
-            item.name.toLowerCase().slice(0, value.length) ||
-          value.slice(0, value.length) ===
-            item.symbol.toLowerCase().slice(0, value.length)
-        ) {
-          myList.push(item);
-        } else if (
-          value.slice(0, value.length) !==
-            item.name.toLowerCase().slice(0, value.length) ||
-          value.slice(0, value.length) !==
-            item.symbol.toLowerCase().slice(0, value.length)
-        ) {
-          myList.splice(index, 1);
-        }
-        {
-          setSuggestions([]);
-        }
-      });
-      setSuggestions(myList.slice(0, 10));
-    } else setSuggestions([]);
+useEffect(() => {
+  fetchJobDetails(); // Keep this inside useEffect for fetching job details
+
+  const socket = io(url, {
+    reconnection: true, // Allow reconnections
+    reconnectionAttempts: 5, // Retry a few times on disconnect
+    timeout: 20000, // Set a timeout for the connection
+  });
+
+  // Set up socket listeners
+  socket.on("insertTask", (newTask) => {
+    setTaskData((prevTask) => [...prevTask, newTask]);
+    console.log("taskData", taskdData);
+  });
+
+  socket.on("updateTask", (updatedTask) => {
+    setTaskData((prevTasks) =>
+      prevTasks.map((task) =>
+        task._id === updatedTask._id ? { ...task, ...updatedTask } : task
+      )
+    );
+  });
+
+  socket.on("deleteTask", ({ taskId }) => {
+    setTaskData((prevTasks) =>
+      prevTasks.filter((task) => task._id !== taskId)
+    );
+  });
+
+  return () => {
+    socket.disconnect(); // Clean up when component unmounts
   };
+}, [props.mainJobId]); // Keep dependencies minimal to avoid reconnecting unnecessarily
