@@ -47,3 +47,5 @@ export const UpdateTaskModal = (props) => {
     </div>
   );
 };
+
+export default UpdateTaskModal;

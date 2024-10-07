@@ -66,3 +66,5 @@ export const InviteModal = (props) => {
     </div>
   );
 };
+
+export default InviteModal;

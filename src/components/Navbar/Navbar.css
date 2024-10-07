@@ -10,6 +10,14 @@
   z-index: 900;
 }
 
+.appName-content {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 25px;
+  font-weight: 900;
+  color: rgb(140, 0, 255);
+}
+
 .leftNav {
   width: fit-content;
   display: flex;

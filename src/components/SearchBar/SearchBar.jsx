@@ -59,13 +59,10 @@ export const SearchBar = (props) => {
   //
   return (
     <div className="searchBar-wrapper">
-      <div>
-        <p>Invite user to job</p>
-      </div>
       <div className="serchInput-wrapper">
         <input
-          className="searchInput"
-          placeholder="Search..."
+          className="searchBarInput"
+          placeholder="Search User"
           type="search"
           onChange={(e) => handleChange(e)}
           value={searchInput}

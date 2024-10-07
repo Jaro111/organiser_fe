@@ -28,7 +28,7 @@ export const Navbar = (props) => {
     <div className="navbar-wrapper">
       <div className="leftNav">
         <p className="appName-content" onClick={() => navigateToPage("/")}>
-          SHARED ORGANISER
+          MULTI-USER TASK ORGANISER
         </p>
         {isModalSignInVisible && (
           <ModalSignUp setIsmodalSignInVisible={setIsmodalSignInVisible} />

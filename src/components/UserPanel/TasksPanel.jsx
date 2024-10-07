@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { userContext } from "../../common/context";
 import { updateTaskStatus } from "../../utils/task";
 import { deleteTask } from "../../utils/task";
-import { UpdateTaskModal } from "./updateTaskModal";
+import { UpdateTaskModal } from "./UpdateTaskModal";
 import { IoArrowRedo } from "react-icons/io5";
 import { ImBin } from "react-icons/im";
 import "./TasksPanel.css";

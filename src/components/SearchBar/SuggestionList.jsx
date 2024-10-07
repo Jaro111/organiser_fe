@@ -1,5 +1,5 @@
 import React from "react";
-import { InviteModal } from "./inviteModal";
+import { InviteModal } from "./InviteModal";
 import { userContext } from "../../common/context";
 import { useContext, useState } from "react";
 import { GoDotFill } from "react-icons/go";

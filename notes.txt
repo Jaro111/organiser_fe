@@ -1,33 +1,19 @@
-useEffect(() => {
-  fetchJobDetails(); // Keep this inside useEffect for fetching job details
-
-  const socket = io(url, {
-    reconnection: true, // Allow reconnections
-    reconnectionAttempts: 5, // Retry a few times on disconnect
-    timeout: 20000, // Set a timeout for the connection
-  });
-
-  // Set up socket listeners
-  socket.on("insertTask", (newTask) => {
-    setTaskData((prevTask) => [...prevTask, newTask]);
-    console.log("taskData", taskdData);
-  });
-
-  socket.on("updateTask", (updatedTask) => {
-    setTaskData((prevTasks) =>
-      prevTasks.map((task) =>
-        task._id === updatedTask._id ? { ...task, ...updatedTask } : task
-      )
-    );
-  });
-
-  socket.on("deleteTask", ({ taskId }) => {
-    setTaskData((prevTasks) =>
-      prevTasks.filter((task) => task._id !== taskId)
-    );
-  });
-
-  return () => {
-    socket.disconnect(); // Clean up when component unmounts
-  };
-}, [props.mainJobId]); // Keep dependencies minimal to avoid reconnecting unnecessarily
+version: "3.9"
+services:
+ frontend:
+   build:
+     context: ./frontend
+     dockerfile: Dockerfile
+   container_name: frontend
+   restart: always
+   ports:
+     - 3000:3000
+   volumes:
+     - ./frontend:/app
+     - /app/node_modules
+   environment:
+     - VITE_URL = http://localhost:5000
+   networks:
+     - network
+networks:
+ network:
