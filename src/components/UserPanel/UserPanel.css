@@ -12,6 +12,31 @@
   margin-bottom: 30px;
 }
 
+.userPanel-btnCart-wrapper {
+  display: flex;
+  height: 60px;
+  width: 100%;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.userPanel-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+  margin-left: 33%;
+}
+
+.userPanel-icon-wrapper {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 120px;
+}
+
 .username-btn {
   margin-top: 20px;
   min-width: 100px;
@@ -22,4 +47,10 @@
   color: rgb(14, 13, 13);
   border: 2px solid rgb(255, 0, 221);
   border-radius: 10px;
+}
+
+.cartIcon {
+  width: 40px;
+  height: 40px;
+  color: rgb(61, 243, 61);
 }

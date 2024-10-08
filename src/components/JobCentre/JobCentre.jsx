@@ -1,5 +1,6 @@
 import React from "react";
 import { getJobDetils } from "../../utils/job";
+import { ShopingListModal } from "../ShopingListModal/ShopingListModal";
 import { io } from "socket.io-client";
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../common/context";
@@ -10,7 +11,9 @@ import "./JobCentre.css";
 
 export const JobCentre = (props) => {
   //
+  const [isShopingModalVisible, setIsshopingModalVisible] = useState(false);
   const user = useContext(userContext).user;
+
   const [users, setUsers] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [jobId, setJobId] = useState("");
@@ -98,7 +101,7 @@ export const JobCentre = (props) => {
   return (
     <div className="jobCentre-wrapper">
       <SearchBar jobId={jobId} users={users} numberOfInv={props.numberOfInv} />
-      <div>
+      <div className="jobCentre-jobTitle-wrapper">
         <p className="jobCentre-jobTitle">{props.jobTitle}</p>
       </div>
 
@@ -119,10 +122,18 @@ export const JobCentre = (props) => {
               taskStatus={taskStatus}
               setTaskStatus={setTaskStatus}
               owner={owner}
+              isShopingModalVisible={isShopingModalVisible}
+              setIsshopingModalVisible={setIsshopingModalVisible}
             />
           );
         })}
       </div>
+      {isShopingModalVisible && (
+        <ShopingListModal
+          setIsshopingModalVisible={setIsshopingModalVisible}
+          jobId={jobId}
+        />
+      )}
     </div>
   );
 };
