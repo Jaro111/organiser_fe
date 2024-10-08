@@ -12,14 +12,16 @@
 }
 
 .addToListPanel-input {
-  width: 100px;
-  height: 30px;
+  width: 130px;
+  height: 40px;
+  font-size: 25px;
+  font-weight: 700;
 }
 
 .addToListPanel-btn {
-  width: 33px;
-  height: 33px;
-  font-size: 15px;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
   font-weight: 800;
   color: red;
 }

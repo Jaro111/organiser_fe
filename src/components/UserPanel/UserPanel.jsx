@@ -16,22 +16,14 @@ export const UserPanel = (props) => {
   const tempTaskUser = props.tempTaskUser;
   const setTempTaskUser = props.setTempTaskUser;
 
-  const colorFunc = () => {
-    const colors = ["pink", "orange", "lightgrey", "lightblue", "lightviolet"];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    return randomColor;
-  };
-
-  colorFunc();
-
   return (
     <div className="userPanel-wrapper">
       <div className="userPanel-btnCart-wrapper">
         <div className="userPanel-btn-wrapper">
           <button
             style={{
-              backgroundColor:
-                userId === props.owner ? " rgb(6, 185, 6)" : colorFunc(),
+              backgroundColor: props.colors[userId],
+              // userId === props.owner ? " rgb(6, 185, 6)" : colorFunc(),
             }}
             className="username-btn"
           >

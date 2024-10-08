@@ -1,11 +1,11 @@
 .shopingListModal {
   position: absolute;
   width: 800px;
-  height: 800px;
+  height: 850px;
   left: calc(50% - 400px);
   top: 10%;
   border: 3px solid black;
-  background-color: rgba(0, 0, 0, 0.678);
+  background-color: rgba(0, 0, 0, 0.842);
 }
 
 .closeShopingModal-wrapper {
@@ -13,6 +13,16 @@
   height: 5%;
   display: flex;
   justify-content: flex-end;
+}
+.shopingListTitle-content {
+  color: white;
+  font-size: 30px;
+  margin: 0 0 10px 0;
+}
+.shopingListTitle-content-span {
+  color: rgb(201, 151, 248);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
 }
 .closeShopingModal-icon {
   color: white;
@@ -22,7 +32,7 @@
 
 .shopingListModal-wrapper {
   width: 99%;
-  height: 95%;
+  height: 88%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -31,7 +41,95 @@
 
 .shopingItems-wrapper {
   border: 1px solid white;
-  width: 90%;
+  width: 85%;
   height: 85%;
   color: white;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.user-letter-wrapper {
+  font-size: 18px;
+  width: fit-content;
+  height: fit-content;
+  height: 28px;
+  width: 28px;
+  line-height: 28px;
+  -moz-border-radius: 14px; /* or 50% */
+  border-radius: 14px; /* or 50% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.user-letter-content {
+  margin: 0;
+}
+
+.shopingListItem-wrapper {
+  margin: 10px 3px 3px 20px;
+  padding: 0;
+  font-size: 23px;
+  font-weight: 700;
+  width: fit-content;
+  display: flex;
+}
+.shopingListItem-title-content {
+  margin: 0;
+  padding: 0 5px 0 0;
+}
+
+.checkIcon {
+  margin: 0 5px;
+  color: rgb(9, 253, 9);
+  height: 100%;
+}
+
+.checkIcon:hover {
+  background-color: white;
+}
+.cancelIcon {
+  color: rgb(235, 114, 114);
+  height: 100%;
+}
+.cancelIcon:hover {
+  color: white;
+}
+
+.clearShopingListModal-wrapper {
+  height: fit-content;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+  margin-top: 25px;
+}
+
+.clearShopingListModal-wrapper:hover {
+  color: red;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.clearShopingListModal-confirm-wrapper {
+  height: fit-content;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+  margin-top: 25px;
+}
+
+.confirmClear-content {
+  margin: 0 10px 0 0;
+}
+.confirmClear-content:hover {
+  font-size: 25px;
+  background-color: red;
+  color: black;
+  cursor: pointer;
 }

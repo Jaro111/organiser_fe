@@ -21,7 +21,41 @@ export const JobCentre = (props) => {
   const [tempTaskUser, setTempTaskUser] = useState({});
   const [taskLength, setTaskLength] = useState(0);
   const [taskStatus, setTaskStatus] = useState(false);
+  const [colors, setColors] = useState({});
+  const [colorsLength, setColorsLength] = useState(0);
+  const [counter, setCounter] = useState(0);
 
+  const colorFunc = () => {
+    const colors = [
+      "pink",
+      "orange",
+      "lightblue",
+      "yellow",
+      "lightpink",
+      "lightskyblue",
+      ,
+      "lightseagreen",
+    ];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    return randomColor;
+  };
+
+  const setColorsFunc = () => {
+    if (counter <= 1) {
+      const newObj = {};
+      users.map((user, index) => {
+        if (index === 0) {
+          newObj[user._id] = "lightgreen";
+        } else {
+          newObj[user._id] = colorFunc();
+        }
+      });
+      setColors(newObj);
+      setColorsLength(Object.values(newObj).length);
+      console.log(newObj);
+      setCounter(counter + 1);
+    }
+  };
   //
   const url = import.meta.env.VITE_URL;
   // temp task data
@@ -40,6 +74,7 @@ export const JobCentre = (props) => {
       setJobId(data.job.id);
       setOwner(data.job.owner._id);
       props.setJobTitle(data.job.title);
+      setColorsFunc();
     } else {
       setTimeout(() => {
         console.log("Loading job detail...");
@@ -53,11 +88,7 @@ export const JobCentre = (props) => {
     fetchJobDetails();
     //
     const socket = io(url);
-    // socket.off("insertTask");
-    // socket.off("updateTask");
-    // socket.off("deleteTask");
-    // socket.off("updateJob");
-    //
+
     socket.on("insertTask", (newTask) => {
       setTaskData((prevTask) => [...prevTask, newTask]);
       console.log("taskData", taskdData);
@@ -96,6 +127,8 @@ export const JobCentre = (props) => {
     taskStatus,
     taskdData,
     jobData,
+    colorsLength,
+    users.length,
   ]);
 
   return (
@@ -124,6 +157,7 @@ export const JobCentre = (props) => {
               owner={owner}
               isShopingModalVisible={isShopingModalVisible}
               setIsshopingModalVisible={setIsshopingModalVisible}
+              colors={colors}
             />
           );
         })}
@@ -132,6 +166,7 @@ export const JobCentre = (props) => {
         <ShopingListModal
           setIsshopingModalVisible={setIsshopingModalVisible}
           jobId={jobId}
+          colors={colors}
         />
       )}
     </div>
