@@ -1,0 +1,25 @@
+.addToListPanel-wrapper {
+  width: fit-content;
+  height: 10%t;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.addToListPanel-input {
+  width: 100px;
+  height: 30px;
+}
+
+.addToListPanel-btn {
+  width: 33px;
+  height: 33px;
+  font-size: 15px;
+  font-weight: 800;
+  color: red;
+}

@@ -105,6 +105,25 @@ export const acceptInvitation = async (token, jobId) => {
   return data;
 };
 
+// add editShopingList
+export const editShopingList = async (token, jobId, action, title) => {
+  const res = await fetch(`${url}/editList`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      action: action,
+      jobId: jobId,
+      title: title,
+    }),
+  });
+
+  const data = res.json();
+  return data;
+};
+
 // export const getAllJobs = async (token) => {
 //   const res = await fetch(`${url}/job/getJobByUser`, {
 //     method: "GET",

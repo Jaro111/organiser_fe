@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { AddTaskPanel } from "./AddTaskPanel";
 import { TasksPanel } from "./TasksPanel";
+import { BsCart4 } from "react-icons/bs";
 
 import "./UserPanel.css";
 
@@ -25,15 +26,28 @@ export const UserPanel = (props) => {
 
   return (
     <div className="userPanel-wrapper">
-      <button
-        style={{
-          backgroundColor:
-            userId === props.owner ? " rgb(6, 185, 6)" : colorFunc(),
-        }}
-        className="username-btn"
-      >
-        <p>{props.username}</p>
-      </button>
+      <div className="userPanel-btnCart-wrapper">
+        <div className="userPanel-btn-wrapper">
+          <button
+            style={{
+              backgroundColor:
+                userId === props.owner ? " rgb(6, 185, 6)" : colorFunc(),
+            }}
+            className="username-btn"
+          >
+            <p>{props.username}</p>
+          </button>
+        </div>
+        <div className="userPanel-icon-wrapper">
+          <BsCart4
+            onClick={() => {
+              props.setIsshopingModalVisible(!props.isShopingModalVisible);
+            }}
+            className="cartIcon"
+          />
+        </div>
+      </div>
+
       <>
         <AddTaskPanel
           jobId={jobId}

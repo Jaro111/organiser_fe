@@ -21,7 +21,12 @@
   flex-wrap: wrap;
   gap: 20px;
 }
-
+.jobCentre-jobTitle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .jobCentre-jobTitle {
   font-size: 25px;
   font-weight: 800;
