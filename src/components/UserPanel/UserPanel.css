@@ -1,4 +1,5 @@
 .userPanel-wrapper {
+  position: relative;
   border: 1px solid rgb(4, 0, 255);
   background-color: rgb(162, 162, 231);
   /* background-color: rgb(6, 185, 6); */
@@ -29,12 +30,15 @@
 }
 
 .userPanel-icon-wrapper {
+  position: absolute;
   height: 100%;
   width: fit-content;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-left: 120px;
+  right: 20px;
+  top: -600px;
+  z-index: 100;
 }
 
 .username-btn {
@@ -48,7 +52,30 @@
   border: 2px solid rgb(255, 0, 221);
   border-radius: 10px;
 }
+/* ------------------------DELETE--------------------------- */
+.userPanel-deleteUser-icon {
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}
+.deleteUserConfirmation-wrapper {
+  margin-left: 10px;
+  margin-top: 20px;
+  display: flex;
+}
+.deleteUserConfirmation-content,
+.deleteUserConfirmation-content-YN {
+  margin: 0;
+  padding: 0 2px;
+  font-weight: 700;
+}
+.deleteUserConfirmation-content-YN:hover {
+  color: red;
+  cursor: pointer;
+}
 
+/* ---------------------------------------------------------- */
 .cartIcon {
   width: 40px;
   height: 40px;

@@ -32,6 +32,23 @@ export const addNewJob = async (token, title) => {
   const data = await res.json();
   return data;
 };
+//
+// Delete job
+export const deleteJob = async (token, jobId) => {
+  const res = await fetch(`${url}/job/deleteJob`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jobId: jobId,
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};
 
 // get users and job details by id
 
@@ -70,6 +87,23 @@ export const getJobById = async (jobId, token) => {
 // invite user to job
 export const inViteToJob = async (jobId, invitedUserId, token) => {
   const res = await fetch(`${url}/job/inviteToJob`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jobId: jobId,
+      invitedUserId: invitedUserId,
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};
+// Remove from a job
+export const removeFromJob = async (jobId, invitedUserId, token) => {
+  const res = await fetch(`${url}/job/removeUserFromJob`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,

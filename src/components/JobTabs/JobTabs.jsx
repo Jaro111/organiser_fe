@@ -20,8 +20,10 @@ export const JobTabs = (props) => {
       console.log("click");
     } else {
       const newJob = await addNewJob(user.token, props.newJobTitle);
-      props.setJobsLength(props.jobs.length + 1);
+      console.log(newJob);
+      props.setJobsLength(props.jobsLength + 1);
       props.setNewJobTitle("");
+      props.setMainJobId(newJob.job._id);
     }
   };
 
