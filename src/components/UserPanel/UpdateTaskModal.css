@@ -5,6 +5,7 @@
   min-height: 120px;
   border: 2px solid rgb(0, 124, 56);
   left: 30%;
+  z-index: 200;
 }
 
 .updateTaskModal-close-wrapper {

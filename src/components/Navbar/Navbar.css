@@ -22,12 +22,18 @@
   width: fit-content;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .rightNav {
   width: fit-content;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.dateToday-content {
+  font-weight: 800;
 }
 
 .notificationIcon-wrapper {

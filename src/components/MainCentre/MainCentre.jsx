@@ -45,7 +45,7 @@ export const MainCentre = (props) => {
 
     const socket = io(url);
     //
-    // socket.off("updateJob");
+
     socket.on("updateJob", (updatedJob) => {
       setJobData((prevJobs) =>
         prevJobs.map((job) =>
@@ -66,6 +66,7 @@ export const MainCentre = (props) => {
           setNewJobTitle={setNewJobTitle}
           jobsLength={jobsLength}
           setJobsLength={setJobsLength}
+          mainJobId={mainJobId}
           setMainJobId={setMainJobId}
           jobs={jobs}
           numberOfInv={props.numberOfInv}

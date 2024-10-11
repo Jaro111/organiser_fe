@@ -1,20 +1,21 @@
 import React from "react";
 import { getInvitations, acceptInvitation } from "../../utils/job";
+import { rejectInvitation } from "../../utils/job";
 import { userContext } from "../../common/context";
 import { useEffect, useState, useContext } from "react";
 import "./NotificationsCentre.css";
 
-export const NotificationsCentre = () => {
+export const NotificationsCentre = (props) => {
   //
   const user = useContext(userContext).user;
   const [invitations, setInvitations] = useState([]);
-  const [invLength, setInvLength] = useState(0);
+  // const [invJobId, setInvJobId] = useState("");
 
   const loadInv = async () => {
     const data = await getInvitations(user.token, user.id);
     console.log(data);
     setInvitations(data);
-    setInvLength(data.length);
+    props.setNumberOfInv(data.length);
   };
 
   //
@@ -22,12 +23,19 @@ export const NotificationsCentre = () => {
     console.log(item);
     const data = await acceptInvitation(user.token, item._id);
     console.log(data);
-    if (data.message === "Invitation accepted") setInvLength(invLength - 1);
+    if (data.message === "Invitation accepted")
+      props.setNumberOfInv(props.numberOfInv - 1);
+  };
+  //
+  const clickReject = async (item) => {
+    const data = await rejectInvitation(user.token, item._id);
+    if (data.message === "Invitation rejected")
+      props.setNumberOfInv(props.numberOfInv - 1);
   };
   //
   useEffect(() => {
     loadInv();
-  }, [user.id, invLength]);
+  }, [user.id, props.numberOfInv]);
 
   return (
     <div className="notificationsCentre-wrapper">
@@ -49,7 +57,12 @@ export const NotificationsCentre = () => {
                     >
                       Accept
                     </p>
-                    <p className="invItemsReject-content">Reject</p>
+                    <p
+                      className="invItemsReject-content"
+                      onClick={() => clickReject(item)}
+                    >
+                      Reject
+                    </p>
                   </>
                 </div>
               );
