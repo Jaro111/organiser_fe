@@ -1,12 +1,19 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useContext, useState } from "react";
+import { removeFromJob } from "../../utils/job";
+import { userContext } from "../../common/context";
 import { AddTaskPanel } from "./AddTaskPanel";
 import { TasksPanel } from "./TasksPanel";
 import { BsCart4 } from "react-icons/bs";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 import "./UserPanel.css";
 
 export const UserPanel = (props) => {
+  const user = useContext(userContext).user;
+  //
+  const [deleteUserConfirmation, setDeleteUserConfirmation] = useState(false);
+  //
   const tasks = props.tasks;
   const userId = props.userId;
   const jobId = props.jobId;
@@ -15,6 +22,12 @@ export const UserPanel = (props) => {
   const users = props.users;
   const tempTaskUser = props.tempTaskUser;
   const setTempTaskUser = props.setTempTaskUser;
+  //
+  const deleteUserFunc = async () => {
+    const data = await removeFromJob(jobId, userId, user.token);
+    console.log(data);
+    setDeleteUserConfirmation(!deleteUserConfirmation);
+  };
 
   return (
     <div className="userPanel-wrapper">
@@ -23,12 +36,40 @@ export const UserPanel = (props) => {
           <button
             style={{
               backgroundColor: props.colors[userId],
-              // userId === props.owner ? " rgb(6, 185, 6)" : colorFunc(),
             }}
             className="username-btn"
           >
             <p>{props.username}</p>
           </button>
+          {userId !== props.owner && user.id === props.owner ? (
+            deleteUserConfirmation ? (
+              <div className="deleteUserConfirmation-wrapper">
+                <p className="deleteUserConfirmation-content">Sure?</p>
+                <p
+                  className="deleteUserConfirmation-content-YN"
+                  onClick={deleteUserFunc}
+                >
+                  Y
+                </p>
+                <p className="deleteUserConfirmation-content">/</p>
+                <p
+                  className="deleteUserConfirmation-content-YN"
+                  onClick={() =>
+                    setDeleteUserConfirmation(!deleteUserConfirmation)
+                  }
+                >
+                  N
+                </p>
+              </div>
+            ) : (
+              <RiDeleteBin2Line
+                onClick={() =>
+                  setDeleteUserConfirmation(!deleteUserConfirmation)
+                }
+                className="userPanel-deleteUser-icon"
+              />
+            )
+          ) : null}
         </div>
         <div className="userPanel-icon-wrapper">
           <BsCart4

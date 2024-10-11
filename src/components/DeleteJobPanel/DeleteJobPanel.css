@@ -1,0 +1,40 @@
+.deleteJobPanel-wrapper {
+  width: fit-content;
+  height: fit-content;
+  margin-right: 20px;
+}
+
+.deleteJob-bin-icon {
+  width: 40px;
+  height: 40px;
+  color: black;
+}
+
+.deleteJob-bin-icon:hover {
+  width: 50px;
+  height: 50px;
+  color: red;
+  cursor: pointer;
+}
+
+.deleteJobConfirmation-wrapper {
+  display: flex;
+}
+
+.deleteJobConfirmation-content {
+  margin: 0 5px;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.deleteJobConfirmation-content-YN {
+  margin: 0 5px;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+.deleteJobConfirmation-content-YN:hover {
+  font-size: 25px;
+  color: red;
+  cursor: pointer;
+}

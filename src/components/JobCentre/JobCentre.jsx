@@ -33,7 +33,6 @@ export const JobCentre = (props) => {
       "yellow",
       "lightpink",
       "lightskyblue",
-      ,
       "lightseagreen",
     ];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
@@ -41,20 +40,17 @@ export const JobCentre = (props) => {
   };
 
   const setColorsFunc = () => {
-    if (counter <= 1) {
-      const newObj = {};
-      users.map((user, index) => {
-        if (index === 0) {
-          newObj[user._id] = "lightgreen";
-        } else {
-          newObj[user._id] = colorFunc();
-        }
-      });
-      setColors(newObj);
-      setColorsLength(Object.values(newObj).length);
-      console.log(newObj);
-      setCounter(counter + 1);
-    }
+    const newObj = {};
+    users.map((u) => {
+      if (u._id === owner) {
+        newObj[u._id] = "lightgreen";
+      } else {
+        newObj[u._id] = colorFunc();
+      }
+    });
+    setColors(newObj);
+    setColorsLength(Object.values(newObj).length);
+    setCounter(counter + 1);
   };
   //
   const url = import.meta.env.VITE_URL;
@@ -69,6 +65,8 @@ export const JobCentre = (props) => {
     //
     if (props.mainJobId.length > 0) {
       const data = await getJobDetils(props.mainJobId, user.token);
+      console.log(data);
+
       setUsers(data.job.users);
       setTasks(data.job.task);
       setJobId(data.job.id);
@@ -127,13 +125,20 @@ export const JobCentre = (props) => {
     taskStatus,
     taskdData,
     jobData,
-    colorsLength,
+    // colorsLength,
     users.length,
   ]);
 
   return (
     <div className="jobCentre-wrapper">
-      <SearchBar jobId={jobId} users={users} numberOfInv={props.numberOfInv} />
+      <SearchBar
+        jobId={jobId}
+        users={users}
+        numberOfInv={props.numberOfInv}
+        jobsLength={props.jobsLength}
+        setJobsLength={props.setJobsLength}
+        setMainJobId={props.setMainJobId}
+      />
       <div className="jobCentre-jobTitle-wrapper">
         <p className="jobCentre-jobTitle">{props.jobTitle}</p>
       </div>

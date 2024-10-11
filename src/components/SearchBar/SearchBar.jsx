@@ -1,6 +1,7 @@
 import React from "react";
 import { getAllUsers } from "../../utils/user";
 import { userContext } from "../../common/context";
+import { DeleteJobPanel } from "../DeleteJobPanel/DeleteJobPanel";
 import { SuggestionList } from "./SuggestionList";
 import { useEffect, useState, useContext } from "react";
 import "./SearchBar.css";
@@ -76,6 +77,12 @@ export const SearchBar = (props) => {
           />
         )}
       </div>
+      <DeleteJobPanel
+        jobsLength={props.jobsLength}
+        setJobsLength={props.setJobsLength}
+        jobId={jobId}
+        setMainJobId={props.setMainJobId}
+      />
     </div>
   );
 };

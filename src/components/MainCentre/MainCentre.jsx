@@ -76,6 +76,9 @@ export const MainCentre = (props) => {
         mainJobId={mainJobId}
         jobTitle={jobTitle}
         setJobTitle={setJobTitle}
+        jobsLength={jobsLength}
+        setJobsLength={setJobsLength}
+        setMainJobId={setMainJobId}
       />
     </div>
   );
