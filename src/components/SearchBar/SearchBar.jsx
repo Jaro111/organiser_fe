@@ -82,6 +82,7 @@ export const SearchBar = (props) => {
         setJobsLength={props.setJobsLength}
         jobId={jobId}
         setMainJobId={props.setMainJobId}
+        owner={props.owner}
       />
     </div>
   );

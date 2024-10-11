@@ -8,6 +8,15 @@ import "./JobTabs.css";
 
 export const JobTabs = (props) => {
   const user = useContext(userContext).user;
+  const [activeBorder, setActiveBorder] = useState(false);
+
+  const dateFunc = (item) => {
+    const creationDate = new Date(item.createdAt);
+    const stringDate = `${creationDate.getDate()}-${
+      creationDate.getMonth() + 1
+    }-${creationDate.getFullYear()}`;
+    return stringDate;
+  };
 
   const changeHandler = (e) => {
     e.preventDefault();
@@ -29,22 +38,37 @@ export const JobTabs = (props) => {
 
   const changeJob = (item) => {
     props.setMainJobId(item._id);
+    setActiveBorder(!activeBorder);
+    console.log(props.jobs);
   };
 
   return (
     <div className="jobTab-wrapper">
       {props.jobs.length > 0 ? (
         <>
-          <div className="jobTabs-Wrapper">
+          <div className="jobTabs-wrapper">
             {props.jobs.map((item, index) => {
               return (
-                <button
-                  className="jobTab-btn"
-                  onClick={() => changeJob(item)}
-                  key={index}
-                >
-                  {item.title}
-                </button>
+                <div className="jobTab-btn-content-wrapper" key={index}>
+                  <div
+                    className="jobTab-btn-wrapper"
+                    style={{
+                      border:
+                        item._id === props.mainJobId
+                          ? "10px solid greenyellow"
+                          : "5px solid rgb(110, 129, 235)",
+                    }}
+                  >
+                    <button
+                      className="jobTab-btn"
+                      onClick={() => changeJob(item)}
+                    >
+                      {item.title}
+                    </button>
+                  </div>
+
+                  <p className="job-creationDate-content">{dateFunc(item)}</p>
+                </div>
               );
             })}
           </div>

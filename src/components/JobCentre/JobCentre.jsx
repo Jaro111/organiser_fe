@@ -22,8 +22,6 @@ export const JobCentre = (props) => {
   const [taskLength, setTaskLength] = useState(0);
   const [taskStatus, setTaskStatus] = useState(false);
   const [colors, setColors] = useState({});
-  const [colorsLength, setColorsLength] = useState(0);
-  const [counter, setCounter] = useState(0);
 
   const colorFunc = () => {
     const colors = [
@@ -49,8 +47,6 @@ export const JobCentre = (props) => {
       }
     });
     setColors(newObj);
-    setColorsLength(Object.values(newObj).length);
-    setCounter(counter + 1);
   };
   //
   const url = import.meta.env.VITE_URL;
@@ -65,8 +61,6 @@ export const JobCentre = (props) => {
     //
     if (props.mainJobId.length > 0) {
       const data = await getJobDetils(props.mainJobId, user.token);
-      console.log(data);
-
       setUsers(data.job.users);
       setTasks(data.job.task);
       setJobId(data.job.id);
@@ -83,13 +77,20 @@ export const JobCentre = (props) => {
   // const data = props.data; // Receive data from Listener
 
   useEffect(() => {
-    fetchJobDetails();
     //
+    fetchJobDetails();
     const socket = io(url);
 
+    socket.on("updateJob", (updatedJob) => {
+      setJobData((prevJobs) =>
+        prevJobs.map((job) =>
+          job._id === updatedJob._id ? { ...job, ...updatedJob } : job
+        )
+      );
+    });
+    //
     socket.on("insertTask", (newTask) => {
       setTaskData((prevTask) => [...prevTask, newTask]);
-      console.log("taskData", taskdData);
     });
     //
     socket.on("updateTask", (updatedTask) => {
@@ -105,19 +106,10 @@ export const JobCentre = (props) => {
         prevTasks.filter((task) => task._id !== taskId)
       );
     });
-    //
-    socket.on("updateJob", (updatedJob) => {
-      setJobData((prevJobs) =>
-        prevJobs.map((job) =>
-          job._id === updatedJob._id ? { ...job, ...updatedJob } : job
-        )
-      );
-    });
-    //
+
     return () => {
       socket.disconnect(); // Clean up when component unmounts
     };
-    //
   }, [
     props.mainJobId,
     taskLength,
@@ -138,6 +130,7 @@ export const JobCentre = (props) => {
         jobsLength={props.jobsLength}
         setJobsLength={props.setJobsLength}
         setMainJobId={props.setMainJobId}
+        owner={owner}
       />
       <div className="jobCentre-jobTitle-wrapper">
         <p className="jobCentre-jobTitle">{props.jobTitle}</p>

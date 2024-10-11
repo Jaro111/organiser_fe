@@ -47,7 +47,15 @@ function App() {
               <Home numberOfInv={numberOfInv} setNumberOfInv={setNumberOfInv} />
             }
           />
-          <Route path="/notifications" element={<Notifications />} />
+          <Route
+            path="/notifications"
+            element={
+              <Notifications
+                numberOfInv={numberOfInv}
+                setNumberOfInv={setNumberOfInv}
+              />
+            }
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

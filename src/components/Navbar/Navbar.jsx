@@ -14,6 +14,9 @@ export const Navbar = (props) => {
   const user = useContext(userContext).user;
   const navigate = useNavigate();
 
+  const date = new Date();
+  console.log(date);
+
   const clickSignUp = () => {
     setIsmodalSignInVisible(true);
   };
@@ -30,11 +33,15 @@ export const Navbar = (props) => {
         <p className="appName-content" onClick={() => navigateToPage("/")}>
           MULTI-USER TASK ORGANISER
         </p>
+
         {isModalSignInVisible && (
           <ModalSignUp setIsmodalSignInVisible={setIsmodalSignInVisible} />
         )}
       </div>
       <div className="rightNav">
+        <p className="dateToday-content">{`${date.getDate().toString()}-${(
+          date.getMonth() + 1
+        ).toString()}-${date.getFullYear().toString()}`}</p>
         <SignUp clickSignUp={clickSignUp} />
 
         {user.username ? (

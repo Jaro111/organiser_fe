@@ -155,6 +155,23 @@ export const acceptInvitation = async (token, jobId) => {
   return data;
 };
 
+// reject invitation
+export const rejectInvitation = async (token, jobId) => {
+  const res = await fetch(`${url}/job/rejectInvitation`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      jobId: jobId,
+    }),
+  });
+
+  const data = await res.json();
+  return data;
+};
+
 // add editShopingList
 export const editShopingList = async (token, jobId, action, title, itemId) => {
   const res = await fetch(`${url}/job/editList`, {
