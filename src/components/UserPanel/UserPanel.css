@@ -52,12 +52,19 @@
   border: 2px solid rgb(255, 0, 221);
   border-radius: 10px;
 }
+
 /* ------------------------DELETE--------------------------- */
 .userPanel-deleteUser-icon {
   margin-top: 20px;
   margin-left: 10px;
   width: 30px;
   height: 30px;
+}
+.userPanel-deleteUser-icon:hover {
+  width: 40px;
+  height: 40px;
+  color: red;
+  cursor: pointer;
 }
 .deleteUserConfirmation-wrapper {
   margin-left: 10px;
@@ -80,4 +87,11 @@
   width: 40px;
   height: 40px;
   color: rgb(61, 243, 61);
+}
+
+.cartIcon:hover {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  color: blue;
 }

@@ -55,7 +55,7 @@ export const JobTabs = (props) => {
                     style={{
                       border:
                         item._id === props.mainJobId
-                          ? "10px solid greenyellow"
+                          ? "7px solid greenyellow"
                           : "5px solid rgb(110, 129, 235)",
                     }}
                   >

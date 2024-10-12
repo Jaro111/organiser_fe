@@ -1,0 +1,21 @@
+.logIn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logIn-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.logIn-input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}

@@ -1,19 +1,19 @@
 .modalSignUp-wrapper {
   position: relative;
-  width: 100%;
 }
 
 .modalSignUpWindow {
   position: absolute;
-  top: 100px;
-  left: 38%;
-  width: 50%;
-  height: 200px;
+  top: 200px;
+  left: 300px;
+  width: 600px;
+  height: 300px;
   border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: rgb(172, 124, 218);
 }
 
 .modalSignUpClose-wrapper {
@@ -22,13 +22,40 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color: aqua;
 }
 
-.modalSignUpContent-wrapper {
+.modalSignUp-content-wrapper {
+  position: relative;
   width: 98%;
   height: 90%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  gap: 30px;
+}
+
+.loginRegister-content-wrapper {
+  position: absolute;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginRegister-form-wrapper {
+  position: absolute;
+  top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.moddal-content {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.moddal-content:hover {
+  cursor: pointer;
+  background-color: rgb(169, 240, 169);
 }

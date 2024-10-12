@@ -16,6 +16,10 @@
   background-color: rgb(154, 220, 240);
 }
 
+.newTask-input:hover {
+  border: 1px solid greenyellow;
+}
+
 .addTask-btn {
   width: 46px;
   height: 46px;
@@ -26,4 +30,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.addTask-btn:hover {
+  cursor: pointer;
+  background-color: rgb(255, 0, 0);
 }

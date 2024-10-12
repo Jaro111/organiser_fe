@@ -25,7 +25,7 @@ export const TasksPanel = (props) => {
 
   //
   const taskClick = (item) => {
-    console.log(item);
+    console.log(users);
     if (!item.status) setIsTaskModalVisible(!isTaskModalVisible);
     setTempTask(item);
   };
@@ -65,10 +65,12 @@ export const TasksPanel = (props) => {
                   </div>
                   {item.in}
                   <div className="taskItems-wrapper">
-                    <IoArrowRedo
-                      className="arrowTask-Icon"
-                      onClick={() => taskClick(item)}
-                    />
+                    {users.length > 1 ? (
+                      <IoArrowRedo
+                        className="arrowTask-Icon"
+                        onClick={() => taskClick(item)}
+                      />
+                    ) : null}
                   </div>
                   {/* <div className="taskItems-wrapper">
                     <FaCheckCircle className="checkTask-icon" />

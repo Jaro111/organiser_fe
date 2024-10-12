@@ -32,11 +32,9 @@
   cursor: pointer;
   font-size: 22px;
   font-weight: 700;
-  color: green;
 }
-
-.taskTitle-content:hover {
-  background-color: rgb(181, 125, 233);
+.taskPanelTitle-content:hover {
+  color: rgb(73, 150, 73);
 }
 
 .checkTask-icon {

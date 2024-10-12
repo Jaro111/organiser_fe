@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: row;
   margin-left: 30px;
+  margin-right: 20px;
 }
 
 .signUp-content {
@@ -11,6 +12,10 @@
   padding: 0 5px;
   font-size: 20px;
   font-weight: 800;
+}
+.signUp-content:hover {
+  cursor: pointer;
+  background-color: rgb(182, 141, 221);
 }
 
 .signUpContent-wrapper {

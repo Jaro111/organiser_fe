@@ -39,9 +39,12 @@ export const Navbar = (props) => {
         )}
       </div>
       <div className="rightNav">
-        <p className="dateToday-content">{`${date.getDate().toString()}-${(
-          date.getMonth() + 1
-        ).toString()}-${date.getFullYear().toString()}`}</p>
+        {user.username ? (
+          <p className="dateToday-content">{`${date.getDate().toString()}-${(
+            date.getMonth() + 1
+          ).toString()}-${date.getFullYear().toString()}`}</p>
+        ) : null}
+
         <SignUp clickSignUp={clickSignUp} />
 
         {user.username ? (

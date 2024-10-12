@@ -18,6 +18,11 @@
   color: rgb(140, 0, 255);
 }
 
+.appName-content:hover {
+  cursor: pointer;
+  color: rgb(40, 11, 63);
+}
+
 .leftNav {
   width: fit-content;
   display: flex;
@@ -38,7 +43,6 @@
 
 .notificationIcon-wrapper {
   display: flex;
-  margin-right: 30px;
 }
 .notificationIcon {
   width: 30px;
@@ -50,6 +54,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: end;
+  margin-left: 5px;
 }
 .notificationIcon-content {
   margin: 0;
