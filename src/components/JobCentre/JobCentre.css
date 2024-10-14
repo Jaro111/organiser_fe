@@ -13,7 +13,7 @@
 .users-wrapper {
   /* position: relative; */
   margin-top: 30px;
-  width: 100%;
+  width: 99%;
   min-height: 300px;
   box-sizing: border-box;
   display: flex;
