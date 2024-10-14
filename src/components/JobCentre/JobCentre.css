@@ -1,5 +1,5 @@
 .jobCentre-wrapper {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +22,7 @@
   gap: 20px;
 }
 .jobCentre-jobTitle-wrapper {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,4 +33,16 @@
   font-weight: 800;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(0, 0, 88);
+}
+
+@media only screen and (max-width: 1000px) {
+  .jobCentre-jobTitle {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .jobCentre-jobTitle {
+    font-size: 17px;
+  }
 }

@@ -4,7 +4,7 @@
   background-color: rgb(219, 217, 241);
   border-radius: 15px;
   margin-top: 20px;
-  width: 98%;
+  width: 99%;
   min-height: 300px;
   display: flex;
   flex-wrap: wrap;
@@ -17,12 +17,12 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  max-width: 90%;
+  width: 90%;
   height: auto;
 }
 .taskItems-wrapper {
   display: inline-block;
-  max-width: 80%;
+  max-width: 90%;
   height: auto;
   word-wrap: break-word;
   margin: 1px 2px 1px 2px;
@@ -30,7 +30,7 @@
 .taskPanelTitle-content {
   margin: 1px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
 }
 .taskPanelTitle-content:hover {
@@ -43,8 +43,8 @@
 
 .checkTask-icon,
 .binTask-icon {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .checkTask-icon:hover {
@@ -60,11 +60,66 @@
 }
 
 .arrowTask-Icon {
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   color: rgb(31, 172, 238);
 }
 
 .arrowTask-Icon:hover {
   color: rgb(226, 3, 255);
+}
+
+@media only screen and (max-width: 1100px) {
+  .taskPanelTitle-content {
+    font-size: 18px;
+  }
+  .checkTask-icon,
+  .binTask-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .arrowTask-Icon {
+    width: 22px;
+    height: 22px;
+    color: rgb(31, 172, 238);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .taskPanelTitle-content {
+    margin: 1px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .checkTask-icon,
+  .binTask-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .arrowTask-Icon {
+    width: 18px;
+    height: 18px;
+    color: rgb(31, 172, 238);
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .taskPanelTitle-content {
+    margin: 1px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .checkTask-icon,
+  .binTask-icon {
+    width: 12px;
+    height: 12px;
+  }
+  .arrowTask-Icon {
+    width: 16px;
+    height: 16px;
+    color: rgb(31, 172, 238);
+  }
 }

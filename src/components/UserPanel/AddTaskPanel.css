@@ -1,6 +1,5 @@
 .addTaskPanel-wrapper {
   margin-top: 20px;
-  min-width: 100px;
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
@@ -35,4 +34,18 @@
 .addTask-btn:hover {
   cursor: pointer;
   background-color: rgb(255, 0, 0);
+}
+
+@media only screen and (max-width: 650px) {
+  .newTask-input {
+    width: 140px;
+    height: 40px;
+    font-size: 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: rgb(154, 220, 240);
+  }
+}
+
+@media only screen and (max-width: 420px) {
 }
