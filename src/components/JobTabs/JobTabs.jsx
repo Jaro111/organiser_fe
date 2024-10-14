@@ -33,6 +33,7 @@ export const JobTabs = (props) => {
       props.setJobsLength(props.jobsLength + 1);
       props.setNewJobTitle("");
       props.setMainJobId(newJob.job._id);
+      window.matchMedia;
     }
   };
 
