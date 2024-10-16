@@ -31,3 +31,9 @@
   color: black;
   border: 1px solid black;
 }
+
+@media only screen and (max-width: 440px) {
+  .register-form-wrapper {
+    flex-direction: column;
+  }
+}

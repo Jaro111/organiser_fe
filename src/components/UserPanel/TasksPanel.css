@@ -10,6 +10,7 @@
   flex-wrap: wrap;
   flex-direction: column;
   box-sizing: border-box;
+  overflow-x: auto;
 }
 
 .task-wrapper {
@@ -120,6 +121,26 @@
   .arrowTask-Icon {
     width: 16px;
     height: 16px;
+    color: rgb(31, 172, 238);
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .taskPanelTitle-content {
+    margin: 1px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .checkTask-icon,
+  .binTask-icon {
+    width: 10px;
+    height: 10px;
+  }
+  .arrowTask-Icon {
+    width: 14px;
+    height: 14px;
     color: rgb(31, 172, 238);
   }
 }

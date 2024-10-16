@@ -1,13 +1,14 @@
 .modalSignUp-wrapper {
-  position: relative;
+  position: absolute;
+  top: 150%;
+  left: 30%;
+  width: 40%;
+  height: 300px;
 }
 
 .modalSignUpWindow {
-  position: absolute;
-  top: 200px;
-  left: 300px;
-  width: 600px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   border: 1px solid black;
   display: flex;
   justify-content: center;
@@ -58,4 +59,31 @@
 .moddal-content:hover {
   cursor: pointer;
   background-color: rgb(169, 240, 169);
+}
+
+@media only screen and (max-width: 1200px) {
+  .modalSignUp-wrapper {
+    position: absolute;
+    top: 150%;
+    left: 20%;
+    width: 60%;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .modalSignUp-wrapper {
+    position: absolute;
+    top: 150%;
+    left: 10%;
+    width: 80%;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .moddal-content {
+    font-size: 20px;
+    font-weight: 700;
+  }
 }

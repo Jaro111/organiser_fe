@@ -33,10 +33,6 @@ export const Navbar = (props) => {
         <p className="appName-content" onClick={() => navigateToPage("/")}>
           MULTI-USER TASK ORGANISER
         </p>
-
-        {isModalSignInVisible && (
-          <ModalSignUp setIsmodalSignInVisible={setIsmodalSignInVisible} />
-        )}
       </div>
       <div className="rightNav">
         {user.username ? (
@@ -59,6 +55,9 @@ export const Navbar = (props) => {
           </div>
         ) : null}
       </div>
+      {isModalSignInVisible && (
+        <ModalSignUp setIsmodalSignInVisible={setIsmodalSignInVisible} />
+      )}
     </div>
   );
 };

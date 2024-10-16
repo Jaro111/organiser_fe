@@ -156,3 +156,24 @@
     font-size: 6px;
   }
 }
+
+@media only screen and (max-width: 360px) {
+  .appName-content {
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  .dateToday-content {
+    font-weight: 800;
+    font-size: 7px;
+  }
+
+  .notificationIcon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .notificationIcon-content {
+    font-size: 6px;
+  }
+}
