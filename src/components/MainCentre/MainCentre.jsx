@@ -69,6 +69,7 @@ export const MainCentre = (props) => {
           mainJobId={mainJobId}
           setMainJobId={setMainJobId}
           jobs={jobs}
+          const
           numberOfInv={props.numberOfInv}
         />
       </div>

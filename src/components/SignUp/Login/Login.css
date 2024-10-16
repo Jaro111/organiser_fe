@@ -19,3 +19,9 @@
   flex-direction: column;
   gap: 5px;
 }
+
+@media only screen and (max-width: 440px) {
+  .logIn-form {
+    flex-direction: column;
+  }
+}

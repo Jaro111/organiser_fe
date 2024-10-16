@@ -1,8 +1,9 @@
 .shopingListModal {
   position: absolute;
-  width: 800px;
-  height: 850px;
-  left: calc(50% - 400px);
+  min-width: 60%;
+  max-width: 70%;
+  height: 750px;
+  left: 20%;
   top: 10%;
   border: 3px solid black;
   background-color: rgba(0, 0, 0, 0.842);
@@ -17,18 +18,22 @@
 }
 .shopingListTitle-content {
   color: white;
-  font-size: 30px;
+  font-size: 25px;
   margin: 0 0 10px 0;
 }
 .shopingListTitle-content-span {
   color: rgb(201, 151, 248);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 35px;
+  font-size: 25px;
 }
 .closeShopingModal-icon {
   color: white;
   width: 20px;
   height: 20px;
+}
+
+.closeShopingModal-icon:hover {
+  color: red;
 }
 
 .shopingListModal-wrapper {
@@ -49,6 +54,7 @@
   box-sizing: border-box;
   flex-direction: column;
   flex-wrap: wrap;
+  overflow-x: auto;
 }
 
 .user-letter-wrapper {
@@ -72,7 +78,7 @@
 .shopingListItem-wrapper {
   margin: 10px 3px 3px 20px;
   padding: 0;
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 700;
   width: fit-content;
   display: flex;
@@ -133,4 +139,154 @@
   background-color: red;
   color: black;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 850px) {
+  .shopingListModal {
+    min-width: 80%;
+    max-width: 90%;
+    height: 750px;
+    left: 5%;
+    top: 10%;
+    z-index: 200;
+  }
+
+  .shopingListTitle-content {
+    color: white;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+  }
+  .shopingListTitle-content-span {
+    color: rgb(201, 151, 248);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  .closeShopingModal-icon {
+    color: white;
+    width: 20px;
+    height: 20px;
+  }
+
+  .shopingListItem-wrapper {
+    margin: 10px 3px 3px 20px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 700;
+    width: fit-content;
+    display: flex;
+  }
+  .user-letter-wrapper {
+    font-size: 14px;
+    width: fit-content;
+    height: fit-content;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    -moz-border-radius: 12px; /* or 50% */
+    border-radius: 12px; /* or 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 625px) {
+  .shopingListModal {
+    min-width: 80%;
+    max-width: 90%;
+    height: 80%;
+    left: 5%;
+    top: 10%;
+    z-index: 200;
+  }
+
+  .shopingListTitle-content {
+    color: white;
+    font-size: 20px;
+    margin: 0 0 10px 0;
+  }
+  .shopingListTitle-content-span {
+    color: rgb(201, 151, 248);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  .closeShopingModal-icon {
+    color: white;
+    width: 20px;
+    height: 20px;
+  }
+
+  .shopingListItem-wrapper {
+    margin: 10px 3px 3px 20px;
+    padding: 0;
+    font-size: 15px;
+    font-weight: 700;
+    width: fit-content;
+    display: flex;
+  }
+  .user-letter-wrapper {
+    font-size: 10px;
+    width: fit-content;
+    height: fit-content;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    -moz-border-radius: 10px; /* or 50% */
+    border-radius: 10px; /* or 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .shopingListModal {
+    min-width: 80%;
+    max-width: 90%;
+    height: 80%;
+    left: 5%;
+    top: 10%;
+    z-index: 200;
+  }
+
+  .shopingListTitle-content {
+    color: white;
+    font-size: 17px;
+    margin: 0 0 10px 0;
+  }
+  .shopingListTitle-content-span {
+    color: rgb(201, 151, 248);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+  }
+  .closeShopingModal-icon {
+    color: white;
+    width: 20px;
+    height: 20px;
+  }
+
+  .shopingListItem-wrapper {
+    margin: 10px 3px 3px 20px;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 700;
+    width: fit-content;
+    display: flex;
+  }
+  .user-letter-wrapper {
+    font-size: 8px;
+    width: fit-content;
+    height: fit-content;
+    height: 18px;
+    width: 18px;
+    line-height: 18px;
+    -moz-border-radius: 9px; /* or 50% */
+    border-radius: 9px; /* or 50% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
 }
