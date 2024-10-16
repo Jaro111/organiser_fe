@@ -69,7 +69,7 @@ export const JobCentre = (props) => {
       setColorsFunc();
     } else {
       setTimeout(() => {
-        console.log("Loading job detail...");
+        null;
       }, 1000);
     }
   };
@@ -117,7 +117,6 @@ export const JobCentre = (props) => {
     taskStatus,
     taskdData,
     jobData,
-    // colorsLength,
     users.length,
   ]);
 
@@ -130,35 +129,40 @@ export const JobCentre = (props) => {
         jobsLength={props.jobsLength}
         setJobsLength={props.setJobsLength}
         setMainJobId={props.setMainJobId}
+        mainJobId={props.mainJobId}
         owner={owner}
       />
       <div className="jobCentre-jobTitle-wrapper">
-        <p className="jobCentre-jobTitle">{props.jobTitle}</p>
+        <p className="jobCentre-jobTitle">
+          {props.mainJobId.length > 0 ? props.jobTitle : null}
+        </p>
       </div>
 
       <div className="users-wrapper">
-        {users.map((item, index) => {
-          return (
-            <UserPanel
-              key={index}
-              username={item.username}
-              userId={item._id}
-              tasks={tasks}
-              jobId={jobId}
-              taskLength={taskLength}
-              setTaskLength={setTaskLength}
-              users={users}
-              tempTaskUser={tempTaskUser}
-              setTempTaskUser={setTempTaskUser}
-              taskStatus={taskStatus}
-              setTaskStatus={setTaskStatus}
-              owner={owner}
-              isShopingModalVisible={isShopingModalVisible}
-              setIsshopingModalVisible={setIsshopingModalVisible}
-              colors={colors}
-            />
-          );
-        })}
+        {props.mainJobId.length > 0
+          ? users.map((item, index) => {
+              return (
+                <UserPanel
+                  key={index}
+                  username={item.username}
+                  userId={item._id}
+                  tasks={tasks}
+                  jobId={jobId}
+                  taskLength={taskLength}
+                  setTaskLength={setTaskLength}
+                  users={users}
+                  tempTaskUser={tempTaskUser}
+                  setTempTaskUser={setTempTaskUser}
+                  taskStatus={taskStatus}
+                  setTaskStatus={setTaskStatus}
+                  owner={owner}
+                  isShopingModalVisible={isShopingModalVisible}
+                  setIsshopingModalVisible={setIsshopingModalVisible}
+                  colors={colors}
+                />
+              );
+            })
+          : null}
       </div>
       {isShopingModalVisible && (
         <ShopingListModal

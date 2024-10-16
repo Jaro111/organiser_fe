@@ -18,18 +18,29 @@ export const DeleteJobPanel = (props) => {
   //
   const deleteJobFunc = async () => {
     const data = await deleteJob(user.token, props.jobId);
-    props.setMainJobId(data.jobs[0]._id);
     console.log(data);
-    props.setJobsLength(props.jobsLength - 1);
-
-    setDeleteJobConfirmation(!deleteJobConfirmation);
+    if (data.jobs.length > 0) {
+      props.setMainJobId(data.jobs[0]._id);
+      console.log(props.jobsLength);
+      props.setJobsLength(props.jobsLength - 1);
+      setDeleteJobConfirmation(!deleteJobConfirmation);
+    } else {
+      setDeleteJobConfirmation(!deleteJobConfirmation);
+      props.setMainJobId("");
+    }
   };
 
   const leaveJobFunc = async () => {
     const data = await removeFromJob(props.jobId, user.id, user.token);
     console.log(data);
-    props.setMainJobId(data.jobs[0]._id);
-    setDeleteJobConfirmation(!deleteJobConfirmation);
+    if (data.jobs.length > 0) {
+      props.setMainJobId(data.jobs[0]._id);
+      console.log(props.mainJonId);
+      setDeleteJobConfirmation(!deleteJobConfirmation);
+    } else {
+      setDeleteJobConfirmation(!deleteJobConfirmation);
+      props.setMainJobId("");
+    }
   };
 
   //

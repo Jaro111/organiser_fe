@@ -38,7 +38,7 @@ export const SearchBar = (props) => {
       allUsers.filter((item) => {
         if (
           item.username.toLowerCase().slice(0, value.length) ===
-          value.slice(0, value.length)
+          value.slice(0, value.length).toLowerCase()
         ) {
           if (item._id !== user.id) myList.push(item);
         } else {
@@ -77,13 +77,15 @@ export const SearchBar = (props) => {
           />
         )}
       </div>
-      <DeleteJobPanel
-        jobsLength={props.jobsLength}
-        setJobsLength={props.setJobsLength}
-        jobId={jobId}
-        setMainJobId={props.setMainJobId}
-        owner={props.owner}
-      />
+      {props.mainJobId ? (
+        <DeleteJobPanel
+          jobsLength={props.jobsLength}
+          setJobsLength={props.setJobsLength}
+          jobId={jobId}
+          setMainJobId={props.setMainJobId}
+          owner={props.owner}
+        />
+      ) : null}
     </div>
   );
 };

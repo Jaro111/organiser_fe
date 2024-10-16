@@ -45,7 +45,7 @@ export const JobTabs = (props) => {
 
   return (
     <div className="jobTab-wrapper">
-      {props.jobs.length > 0 ? (
+      {props.jobs.length > 0 && props.mainJobId.length > 0 ? (
         <>
           <div className="jobTabs-wrapper">
             {props.jobs.map((item, index) => {

@@ -15,7 +15,6 @@ export const Navbar = (props) => {
   const navigate = useNavigate();
 
   const date = new Date();
-  console.log(date);
 
   const clickSignUp = () => {
     setIsmodalSignInVisible(true);
