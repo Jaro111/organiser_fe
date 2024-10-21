@@ -1,7 +1,7 @@
 import React from "react";
 import { getJobDetils } from "../../utils/job";
 import { ShopingListModal } from "../ShopingListModal/ShopingListModal";
-import { io } from "socket.io-client";
+import { connectSocket, disconnectSocket } from "../../common/socket";
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../common/context";
 import { UserPanel } from "../UserPanel/UserPanel";
@@ -53,7 +53,7 @@ export const JobCentre = (props) => {
   // temp task data
   const [taskdData, setTaskData] = useState([]);
   // // tempJobData
-  const [jobData, setJobData] = useState([]);
+  // const [jobData, setJobData] = useState([]);
   //
 
   const fetchJobDetails = async () => {
@@ -61,6 +61,7 @@ export const JobCentre = (props) => {
     //
     if (props.mainJobId.length > 0) {
       const data = await getJobDetils(props.mainJobId, user.token);
+
       setUsers(data.job.users);
       setTasks(data.job.task);
       setJobId(data.job.id);
@@ -79,16 +80,16 @@ export const JobCentre = (props) => {
   useEffect(() => {
     //
     fetchJobDetails();
-    const socket = io(url);
+    const socket = connectSocket(url, user.userId);
 
     socket.on("updateJob", (updatedJob) => {
-      setJobData((prevJobs) =>
+      props.setJobData((prevJobs) =>
         prevJobs.map((job) =>
           job._id === updatedJob._id ? { ...job, ...updatedJob } : job
         )
       );
     });
-    //
+
     socket.on("insertTask", (newTask) => {
       setTaskData((prevTask) => [...prevTask, newTask]);
     });
@@ -106,9 +107,14 @@ export const JobCentre = (props) => {
         prevTasks.filter((task) => task._id !== taskId)
       );
     });
+    //
 
     return () => {
-      socket.disconnect(); // Clean up when component unmounts
+      socket.off("updateJob");
+      socket.off("insertTask");
+      socket.off("updateTask");
+      socket.off("deleteTask");
+      // disconnectSocket(); // Clean up when component unmounts
     };
   }, [
     props.mainJobId,
@@ -116,7 +122,7 @@ export const JobCentre = (props) => {
     tempTaskUser,
     taskStatus,
     taskdData,
-    jobData,
+    props.jobData,
     users.length,
   ]);
 
@@ -131,6 +137,8 @@ export const JobCentre = (props) => {
         setMainJobId={props.setMainJobId}
         mainJobId={props.mainJobId}
         owner={owner}
+        jobData={props.jobData}
+        setJobData={props.setJobData}
       />
       <div className="jobCentre-jobTitle-wrapper">
         <p className="jobCentre-jobTitle">
@@ -169,6 +177,8 @@ export const JobCentre = (props) => {
           setIsshopingModalVisible={setIsshopingModalVisible}
           jobId={jobId}
           colors={colors}
+          jobData={props.jobData}
+          setJobData={props.setJobData}
         />
       )}
     </div>

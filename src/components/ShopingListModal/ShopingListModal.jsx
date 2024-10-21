@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useContext, useEffect } from "react";
 import { getJobById, editShopingList } from "../../utils/job";
-import { io } from "socket.io-client";
 import { AddToListPanel } from "./AddToListPanel/AddToListPanel";
 import { IoMdClose } from "react-icons/io";
 import { IoCheckmarkOutline } from "react-icons/io5";
@@ -12,10 +11,11 @@ import { userContext } from "../../common/context";
 export const ShopingListModal = (props) => {
   const user = useContext(userContext).user;
   const letter = user.username.slice(0, 1);
+
   //
-  const url = import.meta.env.VITE_URL;
+
   // // tempJobData
-  const [jobData, setJobData] = useState([]);
+  // const [jobData, setJobData] = useState([]);
 
   const [shopingList, setShopingLIst] = useState([]);
   const [shopingListLength, setShopingListLength] = useState(0);
@@ -64,20 +64,7 @@ export const ShopingListModal = (props) => {
 
   useEffect(() => {
     getJob();
-    //
-    const socket = io(url);
-    //
-    socket.on("updateJob", (updatedJob) => {
-      setJobData((prevJobs) =>
-        prevJobs.map((job) =>
-          job._id === updatedJob._id ? { ...job, ...updatedJob } : job
-        )
-      );
-    });
-    return () => {
-      socket.disconnect(); // Clean up when component unmounts
-    };
-  }, [shopingListLength, itemStatus, jobData]);
+  }, [shopingListLength, itemStatus, props.jobData]);
 
   return (
     <div className="shopingListModal">

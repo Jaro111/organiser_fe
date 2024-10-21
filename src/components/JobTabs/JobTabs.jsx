@@ -1,8 +1,9 @@
 import React from "react";
 import { addNewJob } from "../../utils/job";
+import Cookies from "js-cookie";
 import { pressEnter } from "../../common";
 import { userContext } from "../../common/context";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import "./JobTabs.css";
 
@@ -26,7 +27,7 @@ export const JobTabs = (props) => {
 
   const addJob = async () => {
     if (props.newJobTitle === "") {
-      console.log("click");
+      console.log("");
     } else {
       const newJob = await addNewJob(user.token, props.newJobTitle);
       console.log(newJob);
@@ -40,8 +41,22 @@ export const JobTabs = (props) => {
   const changeJob = (item) => {
     props.setMainJobId(item._id);
     setActiveBorder(!activeBorder);
-    console.log(props.jobs);
+    Cookies.set("mainJobId", item._id, { expires: 7, path: "/" });
   };
+
+  useEffect(() => {
+    const mainJobCookie = Cookies.get("mainJobId");
+    if (props.jobs.length > 0) {
+      if (
+        props.jobData.includes(mainJobCookie) &&
+        props.jobs[0]._id !== mainJobCookie
+      ) {
+        props.setMainJobId(props.jobs[0]._id);
+      }
+    } else {
+      props.setMainJobId("");
+    }
+  }, [props.jobData]);
 
   return (
     <div className="jobTab-wrapper">
