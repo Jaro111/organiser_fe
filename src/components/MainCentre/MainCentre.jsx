@@ -1,4 +1,6 @@
 import React from "react";
+import Cookies from "js-cookie";
+import { connectSocket, disconnectSocket } from "../../common/socket";
 import { getAllJobs } from "../../utils/job";
 import { getInvitations } from "../../utils/job";
 import { useState, useEffect, useContext } from "react";
@@ -6,7 +8,6 @@ import { userContext } from "../../common/context";
 import { JobTabs } from "../JobTabs/JobTabs";
 import { JobCentre } from "../JobCentre/JobCentre";
 import "./MainCentre.css";
-import { io } from "socket.io-client";
 
 export const MainCentre = (props) => {
   //
@@ -24,11 +25,21 @@ export const MainCentre = (props) => {
 
   const fetchJobs = async () => {
     const data = await getAllJobs(user.token);
+    const mainJobCookie = Cookies.get("mainJobId");
     setJobs(data);
+    const jobsArray = [];
+    data.map((job) => {
+      jobsArray.push(job._id);
+    });
+
     if (data.length > 0) {
       if (mainJobId.length === 0) {
         setTimeout(() => {
-          setMainJobId(data[0]._id);
+          if (mainJobCookie && jobsArray.includes(mainJobCookie)) {
+            setMainJobId(mainJobCookie);
+          } else {
+            setMainJobId(data[0]._id);
+          }
         }, 1000);
       }
     }
@@ -39,24 +50,21 @@ export const MainCentre = (props) => {
   const url = import.meta.env.VITE_URL;
 
   useEffect(() => {
-    //
-    fetchJobs();
-    //
+    const socket = connectSocket(url, user.userId);
 
-    const socket = io(url);
     //
-
-    socket.on("updateJob", (updatedJob) => {
-      setJobData((prevJobs) =>
-        prevJobs.map((job) =>
-          job._id === updatedJob._id ? { ...job, ...updatedJob } : job
-        )
-      );
+    socket.on("deleteJob", (jobId) => {
+      const newArray = [];
+      newArray.push(jobId.jobId);
+      setJobData(newArray);
     });
+    fetchJobs();
+
     return () => {
-      socket.disconnect(); // Clean up when component unmounts
+      socket.off("deleteJob");
+      // disconnectSocket(); // Clean up when component unmounts
     };
-  }, [jobsLength, jobTitle, jobData, props.numberOfInv]);
+  }, [jobsLength, jobTitle, jobData, props.numberOfInv, mainJobId]);
 
   return (
     <div className="mainCentre-wrapper">
@@ -71,6 +79,8 @@ export const MainCentre = (props) => {
           jobs={jobs}
           const
           numberOfInv={props.numberOfInv}
+          jobData={jobData}
+          setJobData={setJobData}
         />
       </div>
 
@@ -81,6 +91,8 @@ export const MainCentre = (props) => {
         jobsLength={jobsLength}
         setJobsLength={setJobsLength}
         setMainJobId={setMainJobId}
+        jobData={jobData}
+        setJobData={setJobData}
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from "js-cookie";
 import { deleteJob } from "../../utils/job";
 import { removeFromJob } from "../../utils/job";
 import { useState, useContext } from "react";
@@ -17,30 +18,38 @@ export const DeleteJobPanel = (props) => {
   };
   //
   const deleteJobFunc = async () => {
+    await Cookies.remove("mainJobId", { path: "/" });
+    await props.setMainJobId("");
+    props.setJobData("");
     const data = await deleteJob(user.token, props.jobId);
-    console.log(data);
-    if (data.jobs.length > 0) {
-      props.setMainJobId(data.jobs[0]._id);
-      console.log(props.jobsLength);
-      props.setJobsLength(props.jobsLength - 1);
-      setDeleteJobConfirmation(!deleteJobConfirmation);
-    } else {
-      setDeleteJobConfirmation(!deleteJobConfirmation);
-      props.setMainJobId("");
-    }
+
+    await setDeleteJobConfirmation(!deleteJobConfirmation);
+    // if (data.jobs.length > 0) {
+    //   props.setMainJobId(data.jobs[0]._id);
+    //   // props.setJobsLength(props.jobsLength - 1);
+    //   props.setJobData("");
+    //   setDeleteJobConfirmation(!deleteJobConfirmation);
+    //   Cookies.set("mainJobId", data.jobs[0]._id, { expires: 7, path: "/" });
+    // } else {
+    //   setDeleteJobConfirmation(!deleteJobConfirmation);
+    //   props.setJobData("");
+    //   props.setMainJobId("");
+    // }
   };
 
   const leaveJobFunc = async () => {
+    await Cookies.remove("mainJobId", { path: "/" });
+    await props.setMainJobId("");
     const data = await removeFromJob(props.jobId, user.id, user.token);
-    console.log(data);
-    if (data.jobs.length > 0) {
-      props.setMainJobId(data.jobs[0]._id);
-      console.log(props.mainJonId);
-      setDeleteJobConfirmation(!deleteJobConfirmation);
-    } else {
-      setDeleteJobConfirmation(!deleteJobConfirmation);
-      props.setMainJobId("");
-    }
+    await setDeleteJobConfirmation(!deleteJobConfirmation);
+    // if (data.jobs.length > 0) {
+    //   props.setMainJobId(data.jobs[0]._id);
+    //   setDeleteJobConfirmation(!deleteJobConfirmation);
+    //   Cookies.set("mainJobId", data.jobs[0]._id, { expires: 7, path: "/" });
+    // } else {
+    //   setDeleteJobConfirmation(!deleteJobConfirmation);
+    //   props.setMainJobId("");
+    // }
   };
 
   //
