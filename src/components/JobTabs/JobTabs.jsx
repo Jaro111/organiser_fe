@@ -56,7 +56,7 @@ export const JobTabs = (props) => {
     } else {
       props.setMainJobId("");
     }
-  }, [props.jobData]);
+  }, [props.jobData, props.jobDeleteData]);
 
   return (
     <div className="jobTab-wrapper">
