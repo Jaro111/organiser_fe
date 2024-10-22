@@ -19,11 +19,20 @@ export const DeleteJobPanel = (props) => {
   //
   const deleteJobFunc = async () => {
     await Cookies.remove("mainJobId", { path: "/" });
-    await props.setMainJobId("");
-    props.setJobData("");
     const data = await deleteJob(user.token, props.jobId);
-
+    console.log(data);
+    const newArray = [];
+    newArray.push(props.jobId);
+    props.setJobDeleteData(newArray);
     await setDeleteJobConfirmation(!deleteJobConfirmation);
+    if (data.jobs.length > 0) {
+      console.log("Over");
+      props.setMainJobId(data.jobs[0]._id);
+      Cookies.set("mainJobId", data.jobs[0]._id, { expires: 7, path: "/" });
+    } else {
+      props.setMainJobId("");
+    }
+
     // if (data.jobs.length > 0) {
     //   props.setMainJobId(data.jobs[0]._id);
     //   // props.setJobsLength(props.jobsLength - 1);

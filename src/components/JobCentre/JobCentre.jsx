@@ -52,16 +52,13 @@ export const JobCentre = (props) => {
   const url = import.meta.env.VITE_URL;
   // temp task data
   const [taskdData, setTaskData] = useState([]);
-  // // tempJobData
-  // const [jobData, setJobData] = useState([]);
-  //
 
   const fetchJobDetails = async () => {
-    //
-    //
-    if (props.mainJobId.length > 0) {
+    if (
+      props.mainJobId.length > 0 &&
+      props.mainJobId !== props.jobDeleteData[0]
+    ) {
       const data = await getJobDetils(props.mainJobId, user.token);
-
       setUsers(data.job.users);
       setTasks(data.job.task);
       setJobId(data.job.id);
@@ -69,13 +66,9 @@ export const JobCentre = (props) => {
       props.setJobTitle(data.job.title);
       setColorsFunc();
     } else {
-      setTimeout(() => {
-        null;
-      }, 1000);
+      null;
     }
   };
-
-  // const data = props.data; // Receive data from Listener
 
   useEffect(() => {
     //
@@ -90,9 +83,9 @@ export const JobCentre = (props) => {
       );
     });
 
-    socket.on("insertTask", (newTask) => {
-      setTaskData((prevTask) => [...prevTask, newTask]);
-    });
+    // socket.on("insertTask", (newTask) => {
+    //   setTaskData((prevTask) => [...prevTask, newTask]);
+    // });
     //
     socket.on("updateTask", (updatedTask) => {
       setTaskData((prevTasks) =>
@@ -102,11 +95,11 @@ export const JobCentre = (props) => {
       );
     });
     //
-    socket.on("deleteTask", ({ taskId }) => {
-      setTaskData((prevTasks) =>
-        prevTasks.filter((task) => task._id !== taskId)
-      );
-    });
+    // socket.on("deleteTask", ({ taskId }) => {
+    //   setTaskData((prevTasks) =>
+    //     prevTasks.filter((task) => task._id !== taskId)
+    //   );
+    // });
     //
 
     return () => {
@@ -123,7 +116,9 @@ export const JobCentre = (props) => {
     taskStatus,
     taskdData,
     props.jobData,
+    // props.jobDeleteData,
     users.length,
+    props.jobTitle,
   ]);
 
   return (
@@ -137,17 +132,16 @@ export const JobCentre = (props) => {
         setMainJobId={props.setMainJobId}
         mainJobId={props.mainJobId}
         owner={owner}
-        jobData={props.jobData}
-        setJobData={props.setJobData}
+        setJobDeleteData={props.setJobDeleteData}
       />
       <div className="jobCentre-jobTitle-wrapper">
         <p className="jobCentre-jobTitle">
-          {props.mainJobId.length > 0 ? props.jobTitle : null}
+          {props.jobs.length > 0 && props.mainJobId ? props.jobTitle : null}
         </p>
       </div>
 
       <div className="users-wrapper">
-        {props.mainJobId.length > 0
+        {props.jobs.length > 0
           ? users.map((item, index) => {
               return (
                 <UserPanel
