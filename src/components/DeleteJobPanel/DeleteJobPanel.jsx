@@ -32,18 +32,6 @@ export const DeleteJobPanel = (props) => {
     } else {
       props.setMainJobId("");
     }
-
-    // if (data.jobs.length > 0) {
-    //   props.setMainJobId(data.jobs[0]._id);
-    //   // props.setJobsLength(props.jobsLength - 1);
-    //   props.setJobData("");
-    //   setDeleteJobConfirmation(!deleteJobConfirmation);
-    //   Cookies.set("mainJobId", data.jobs[0]._id, { expires: 7, path: "/" });
-    // } else {
-    //   setDeleteJobConfirmation(!deleteJobConfirmation);
-    //   props.setJobData("");
-    //   props.setMainJobId("");
-    // }
   };
 
   const leaveJobFunc = async () => {
@@ -51,14 +39,6 @@ export const DeleteJobPanel = (props) => {
     await props.setMainJobId("");
     const data = await removeFromJob(props.jobId, user.id, user.token);
     await setDeleteJobConfirmation(!deleteJobConfirmation);
-    // if (data.jobs.length > 0) {
-    //   props.setMainJobId(data.jobs[0]._id);
-    //   setDeleteJobConfirmation(!deleteJobConfirmation);
-    //   Cookies.set("mainJobId", data.jobs[0]._id, { expires: 7, path: "/" });
-    // } else {
-    //   setDeleteJobConfirmation(!deleteJobConfirmation);
-    //   props.setMainJobId("");
-    // }
   };
 
   //
