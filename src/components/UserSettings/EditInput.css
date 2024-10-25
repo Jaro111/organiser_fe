@@ -1,0 +1,75 @@
+.editInput-wrapper {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.editInput-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 150px;
+}
+
+.editInput-content-choice {
+  color: rgb(73, 255, 1);
+  margin-left: 5px;
+}
+
+.editInput-confirm-btn {
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}
+
+.editInput-confirm-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.editInput-input-message-content {
+  margin-top: 20px;
+  font-size: 15px;
+  color: rgb(73, 255, 1);
+}
+
+@media only screen and (max-width: 953px) {
+  .editInput-wrapper {
+    align-items: flex-end;
+  }
+}
+
+@media only screen and (max-width: 731px) {
+  .userSettings-wrapper {
+    right: -200px;
+  }
+  .editInput-input-message-content {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .editInput-wrapper {
+    font-size: 15px;
+  }
+
+  .editInput-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 120px;
+  }
+
+  .editInput-input-message-content {
+    margin-top: 10px;
+    font-size: 10px;
+  }
+}

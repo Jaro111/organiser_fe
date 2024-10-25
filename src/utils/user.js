@@ -74,3 +74,22 @@ export const getAllUsers = async (token) => {
   const userData = data.users;
   return userData;
 };
+
+export const updateUser = async (choice, update, password, token) => {
+  const res = await fetch(`${url}/user/updateUser`, {
+    method: "PUT",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      choice: choice,
+      update: update,
+      password: password,
+    }),
+  });
+  const data = await res.json();
+  console.log(data);
+  return data;
+};
