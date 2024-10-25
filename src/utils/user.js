@@ -90,6 +90,5 @@ export const updateUser = async (choice, update, password, token) => {
     }),
   });
   const data = await res.json();
-  console.log(data);
   return data;
 };
