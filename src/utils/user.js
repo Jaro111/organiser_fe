@@ -93,3 +93,37 @@ export const updateUser = async (choice, update, password, token) => {
   console.log(data);
   return data;
 };
+
+export const sendResetLink = async (email) => {
+  const res = await fetch(`${url}/user/resetLink`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email,
+    }),
+  });
+
+  const data = await res.json();
+
+  return data;
+};
+
+export const resetPassword = async (token, password) => {
+  const res = await fetch(`${url}/user/resetPassword/${token}`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      password: password,
+    }),
+  });
+
+  const data = await res.json();
+
+  return data;
+};

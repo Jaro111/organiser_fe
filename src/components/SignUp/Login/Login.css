@@ -15,9 +15,13 @@
 .logIn-input-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
   flex-direction: column;
   gap: 5px;
+}
+
+.forgotPassword-content {
+  font-size: 10px;
 }
 
 @media only screen and (max-width: 440px) {

@@ -35,7 +35,11 @@ export const LogIn = (props) => {
           <input
             placeholder="password"
             onChange={(e) => changeHandler(e, setPassword, password)}
+            type="password"
           ></input>
+          <a href="/resetPassordForm">
+            <p className="forgotPassword-content">Forgot password</p>
+          </a>
         </div>
 
         <button className="signUp-btn" type="submit">
