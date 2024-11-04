@@ -6,8 +6,9 @@ import { userContext } from "./common/context";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Footer } from "./components/Footer/Footer";
 import { Home } from "./pages/Home";
+import { ResetPassword } from "./pages/ResetPassword";
+import { ResetPasswordRequest } from "./pages/ResetPasswordRequest";
 import { Notifications } from "./pages/Notifications";
-
 import "./App.css";
 
 function App() {
@@ -55,6 +56,11 @@ function App() {
                 setNumberOfInv={setNumberOfInv}
               />
             }
+          />
+          <Route path="/resetPassordForm" element={<ResetPassword />} />
+          <Route
+            path="/resetPassordRequest/:token"
+            element={<ResetPasswordRequest />}
           />
         </Routes>
         <Footer />

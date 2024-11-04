@@ -38,6 +38,7 @@ export const Register = (props) => {
           <input
             placeholder="password"
             onChange={(e) => changeHandler(e, setPassword, password)}
+            type="password"
           ></input>
         </div>
 
