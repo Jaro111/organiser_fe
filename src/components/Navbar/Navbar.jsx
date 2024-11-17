@@ -47,6 +47,7 @@ export const Navbar = (props) => {
             <FaBell
               className="notificationIcon"
               onClick={() => navigateToPage("/notifications")}
+              style={{ color: props.numberOfInv === 0 ? "green" : "red" }}
             />
             <div className="notificationIcon-conten-wrapper">
               <p className="notificationIcon-content">{props.numberOfInv}</p>

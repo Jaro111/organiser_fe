@@ -2,6 +2,7 @@ import React from "react";
 import { getJobDetils } from "../../utils/job";
 import { ShopingListModal } from "../ShopingListModal/ShopingListModal";
 import { connectSocket, disconnectSocket } from "../../common/socket";
+import { BsCart4 } from "react-icons/bs";
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../common/context";
 import { UserPanel } from "../UserPanel/UserPanel";
@@ -122,9 +123,17 @@ export const JobCentre = (props) => {
         setJobDeleteData={props.setJobDeleteData}
       />
       <div className="jobCentre-jobTitle-wrapper">
-        <p className="jobCentre-jobTitle">
-          {props.jobs.length > 0 && props.mainJobId ? props.jobTitle : null}
-        </p>
+        {props.jobs.length > 0 && props.mainJobId ? (
+          <p className="jobCentre-jobTitle">{props.jobTitle}</p>
+        ) : null}
+        <div className="userPanel-icon-wrapper">
+          <BsCart4
+            onClick={() => {
+              setIsshopingModalVisible(!isShopingModalVisible);
+            }}
+            className="cartIcon"
+          />
+        </div>
       </div>
 
       <div className="users-wrapper">

@@ -13,7 +13,7 @@ export const SearchBar = (props) => {
   const [allUsers, setAllUsers] = useState([]);
   const [invitedUsersArray, setInvitedUsersArray] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
-  const [suggestionslength, seTsuggestionsLength] = useState(0);
+  const [suggestionslength, setSuggestionsLength] = useState(0);
   const [searchInput, setSearchInput] = useState("");
   const jobId = props.jobId;
   const users = props.users;
@@ -43,20 +43,20 @@ export const SearchBar = (props) => {
           if (item._id !== user.id) myList.push(item);
         } else {
           setSuggestions([]);
-          seTsuggestionsLength(0);
+          setSuggestionsLength(0);
         }
       });
       setSuggestions(myList);
-      seTsuggestionsLength(myList.length);
+      setSuggestionsLength(myList.length);
     } else {
       setSuggestions([]);
-      seTsuggestionsLength(0);
+      setSuggestionsLength(0);
     }
   };
   //
   useEffect(() => {
     fetchUsers();
-  }, [suggestions, jobId]);
+  }, [suggestions, jobId, suggestionslength]);
   //
   return (
     <div className="searchBar-wrapper">
@@ -74,6 +74,9 @@ export const SearchBar = (props) => {
             jobId={jobId}
             users={users}
             invitedUsersArray={invitedUsersArray}
+            setSearchInput={setSearchInput}
+            setSuggestions={setSuggestions}
+            setSuggestionsLength={setSuggestionsLength}
           />
         )}
       </div>

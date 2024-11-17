@@ -26,6 +26,9 @@ export const InviteModal = (props) => {
     setTimeout(() => {
       props.setIsInviteModalVisible(false);
       setInvitedMessage(null);
+      props.setSearchInput("");
+      props.setSuggestions([]);
+      props.setSuggestionsLength(0);
     }, 1500);
   };
 
