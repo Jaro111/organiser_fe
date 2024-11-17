@@ -35,6 +35,26 @@
   color: rgb(0, 0, 88);
 }
 
+.cartIcon {
+  width: 30px;
+  height: 30px;
+  color: rgb(85, 173, 85);
+}
+
+.userPanel-icon-wrapper {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.cartIcon:hover {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: blue;
+}
+
 @media only screen and (max-width: 1000px) {
   .jobCentre-jobTitle {
     font-size: 20px;

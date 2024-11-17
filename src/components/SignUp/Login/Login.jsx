@@ -1,5 +1,6 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { userContext } from "../../../common/context";
 import { logIn } from "../../../utils/user";
 import { useState } from "react";
@@ -11,6 +12,7 @@ export const LogIn = (props) => {
   const [password, setPassword] = useState("");
 
   const setUser = useContext(userContext).setUser;
+  const navigate = useNavigate();
 
   const changeHandler = (e, setter, state) => {
     setter(e.target.value);
@@ -22,6 +24,7 @@ export const LogIn = (props) => {
     console.log(data);
     setUser(data);
     props.setIsmodalSignInVisible(false);
+    navigate("/");
   };
 
   return (

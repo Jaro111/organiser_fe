@@ -43,6 +43,9 @@ export const SuggestionList = (props) => {
           jobId={props.jobId}
           setIsInviteModalVisible={setIsInviteModalVisible}
           userToInvite={userToInvite}
+          setSearchInput={props.setSearchInput}
+          setSuggestions={props.setSuggestions}
+          setSuggestionsLength={props.setSuggestionsLength}
         />
       )}
     </ul>

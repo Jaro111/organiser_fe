@@ -4,7 +4,7 @@ import { removeFromJob } from "../../utils/job";
 import { userContext } from "../../common/context";
 import { AddTaskPanel } from "./AddTaskPanel";
 import { TasksPanel } from "./TasksPanel";
-import { BsCart4 } from "react-icons/bs";
+
 import { RiDeleteBin2Line } from "react-icons/ri";
 
 import "./UserPanel.css";
@@ -69,14 +69,6 @@ export const UserPanel = (props) => {
               />
             )
           ) : null}
-        </div>
-        <div className="userPanel-icon-wrapper">
-          <BsCart4
-            onClick={() => {
-              props.setIsshopingModalVisible(!props.isShopingModalVisible);
-            }}
-            className="cartIcon"
-          />
         </div>
       </div>
 
