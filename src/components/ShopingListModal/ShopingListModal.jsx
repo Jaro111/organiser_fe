@@ -41,7 +41,6 @@ export const ShopingListModal = (props) => {
       "",
       item._id
     );
-    console.log(item);
     setItemStatus(data.item.status);
   };
   // delete item
@@ -58,7 +57,6 @@ export const ShopingListModal = (props) => {
   // clear list
   const clearList = async () => {
     const data = await editShopingList(user.token, props.jobId, "clear");
-    console.log(data);
     setShopingListLength(0);
   };
 

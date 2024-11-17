@@ -25,7 +25,6 @@ export const UserPanel = (props) => {
   //
   const deleteUserFunc = async () => {
     const data = await removeFromJob(jobId, userId, user.token);
-    console.log(data);
     setDeleteUserConfirmation(!deleteUserConfirmation);
   };
 

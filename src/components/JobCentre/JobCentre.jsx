@@ -83,10 +83,6 @@ export const JobCentre = (props) => {
       );
     });
 
-    // socket.on("insertTask", (newTask) => {
-    //   setTaskData((prevTask) => [...prevTask, newTask]);
-    // });
-    //
     socket.on("updateTask", (updatedTask) => {
       setTaskData((prevTasks) =>
         prevTasks.map((task) =>
@@ -94,20 +90,12 @@ export const JobCentre = (props) => {
         )
       );
     });
-    //
-    // socket.on("deleteTask", ({ taskId }) => {
-    //   setTaskData((prevTasks) =>
-    //     prevTasks.filter((task) => task._id !== taskId)
-    //   );
-    // });
-    //
 
     return () => {
       socket.off("updateJob");
       socket.off("insertTask");
       socket.off("updateTask");
       socket.off("deleteTask");
-      // disconnectSocket(); // Clean up when component unmounts
     };
   }, [
     props.mainJobId,
@@ -116,7 +104,6 @@ export const JobCentre = (props) => {
     taskStatus,
     taskdData,
     props.jobData,
-    // props.jobDeleteData,
     users.length,
     props.jobTitle,
   ]);

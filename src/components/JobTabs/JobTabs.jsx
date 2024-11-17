@@ -30,7 +30,6 @@ export const JobTabs = (props) => {
       console.log("");
     } else {
       const newJob = await addNewJob(user.token, props.newJobTitle);
-      console.log(newJob);
       props.setJobsLength(props.jobsLength + 1);
       props.setNewJobTitle("");
       props.setMainJobId(newJob.job._id);

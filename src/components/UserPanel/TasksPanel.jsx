@@ -25,7 +25,6 @@ export const TasksPanel = (props) => {
 
   //
   const taskClick = (item) => {
-    console.log(users);
     if (!item.status) setIsTaskModalVisible(!isTaskModalVisible);
     setTempTask(item);
   };
@@ -33,13 +32,11 @@ export const TasksPanel = (props) => {
   const changeTaskStatus = async (item) => {
     props.setTaskStatus(item.status);
     const data = await updateTaskStatus(jobId, item._id, user.token);
-    console.log(data);
     props.setTaskStatus(data.task.status);
   };
 
   const removeTask = async (item) => {
     const data = await deleteTask(jobId, item._id, user.token);
-    console.log(data);
     props.setTaskLength(props.tasks.length + -1);
   };
 
@@ -72,9 +69,6 @@ export const TasksPanel = (props) => {
                       />
                     ) : null}
                   </div>
-                  {/* <div className="taskItems-wrapper">
-                    <FaCheckCircle className="checkTask-icon" />
-                  </div> */}
                   <div className="taskItems-wrapper">
                     <ImBin
                       className="binTask-icon"

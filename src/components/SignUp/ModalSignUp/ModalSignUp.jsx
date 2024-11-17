@@ -52,7 +52,17 @@ export const ModalSignUp = (props) => {
                 setRegisterMessage={setRegisterMessage}
               />
             )}
-            <p>{registerMessage}</p>
+            <p
+              style={{
+                color:
+                  registerMessage === "Wrong email format"
+                    ? "red"
+                    : "greenYellow",
+              }}
+              className="reqisterMessage"
+            >
+              {registerMessage}
+            </p>
           </div>
         </div>
       </div>

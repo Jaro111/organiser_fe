@@ -17,6 +17,11 @@
   width: 150px;
 }
 
+.displayDetailsContent {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+}
+
 .editInput-content-choice {
   color: rgb(73, 255, 1);
   margin-left: 5px;

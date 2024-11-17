@@ -24,10 +24,7 @@ export const MainCentre = (props) => {
   };
 
   const fetchJobs = async () => {
-    console.log("main centre");
-    console.log(jobDeleteData);
     const data = await getAllJobs(user.token);
-    console.log(data);
     const mainJobCookie = Cookies.get("mainJobId");
     setJobs(data);
     const jobsArray = [];

@@ -1,6 +1,7 @@
 import React from "react";
+import { emailCheck } from "../../common/emailCheck";
 import { updateUser } from "../../utils/user";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { userContext } from "../../common/context";
 import "./EditInput.css";
 
@@ -12,6 +13,8 @@ export const EditInput = (props) => {
     setChoiceValue,
     password,
     setPassword,
+    setDisplayDetails,
+    displayDetails,
   } = props;
 
   const [updateMessage, setUpdateMessage] = useState("");
@@ -24,11 +27,16 @@ export const EditInput = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (choice === "email" && !emailCheck(choiceValue)) {
+      setUpdateMessage(`Wrong emial format`);
+      return;
+    }
     const data = await updateUser(choice, choiceValue, password, user.token);
     if (data.message === "Success") {
       if (choice === "username" || choice === "email") {
         setUpdateMessage(`Successfully changed ${choice} to: ${choiceValue}`);
         setPassword("");
+        setDisplayDetails(choiceValue);
         setTimeout(() => {
           setUpdateMessage("");
         }, 2000);
@@ -49,6 +57,7 @@ export const EditInput = (props) => {
 
   return (
     <div className="editInput-wrapper">
+      <p className="displayDetailsContent">{displayDetails}</p>
       <p>
         Change <span className="editInput-content-choice">{choice}</span>
       </p>

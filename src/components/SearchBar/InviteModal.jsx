@@ -22,7 +22,6 @@ export const InviteModal = (props) => {
   };
 
   const confirmInvite = () => {
-    console.log(props.jobId);
     inviteUser();
     setTimeout(() => {
       props.setIsInviteModalVisible(false);

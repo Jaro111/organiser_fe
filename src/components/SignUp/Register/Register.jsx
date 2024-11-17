@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { emailCheck } from "../../../common/emailCheck";
 import { signUp } from "../../../utils/user";
 import { useContext } from "react";
 import { userContext } from "../../../common/context";
@@ -15,11 +16,15 @@ export const Register = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await signUp(username, email, password);
-    if (data.message === "User created") {
-      props.setIsLogInVisible(false);
-      props.setIsRegisterInVisible(false);
-      props.setRegisterMessage("Succesfull Register. You can Log In");
+    if (emailCheck(email)) {
+      const data = await signUp(username, email, password);
+      if (data.message === "User created") {
+        props.setIsLogInVisible(false);
+        props.setIsRegisterInVisible(false);
+        props.setRegisterMessage("Succesfull Register. You can Log In");
+      }
+    } else {
+      props.setRegisterMessage("Wrong email format");
     }
   };
 

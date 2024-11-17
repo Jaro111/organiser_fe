@@ -20,7 +20,6 @@ export const DeleteJobPanel = (props) => {
   const deleteJobFunc = async () => {
     await Cookies.remove("mainJobId", { path: "/" });
     const data = await deleteJob(user.token, props.jobId);
-    console.log(data);
     const newArray = [];
     newArray.push(props.jobId);
     props.setJobDeleteData(newArray);

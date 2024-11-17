@@ -23,7 +23,7 @@ export const AddToListPanel = (props) => {
         "add",
         itemTitle
       );
-      console.log(data);
+
       props.setShopingListLength(props.shopingListLength + 1);
     }
     setItemTitle("");

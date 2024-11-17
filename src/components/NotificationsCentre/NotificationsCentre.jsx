@@ -9,20 +9,16 @@ export const NotificationsCentre = (props) => {
   //
   const user = useContext(userContext).user;
   const [invitations, setInvitations] = useState([]);
-  // const [invJobId, setInvJobId] = useState("");
 
   const loadInv = async () => {
     const data = await getInvitations(user.token, user.id);
-    console.log(data);
     setInvitations(data);
     props.setNumberOfInv(data.length);
   };
 
   //
   const clickAccept = async (item) => {
-    console.log(item);
     const data = await acceptInvitation(user.token, item._id);
-    console.log(data);
     if (data.message === "Invitation accepted")
       props.setNumberOfInv(props.numberOfInv - 1);
   };

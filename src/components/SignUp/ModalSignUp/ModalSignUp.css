@@ -50,6 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .moddal-content {
   font-size: 25px;
@@ -59,6 +60,10 @@
 .moddal-content:hover {
   cursor: pointer;
   background-color: rgb(169, 240, 169);
+}
+
+.reqisterMessage {
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -1,11 +1,14 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { userContext } from "../../common/context";
 import { EditInput } from "./EditInput";
 import { IoMdClose } from "react-icons/io";
 import "./UserSettings.css";
 
 export const UserSettings = (props) => {
   //
+  const user = useContext(userContext).user;
+  const [displayDetails, setDisplayDetails] = useState(user.username);
   const [choice, setChoice] = useState("username");
   const [choiceValue, setChoiceValue] = useState("");
   const [password, setPassword] = useState("");
@@ -13,19 +16,25 @@ export const UserSettings = (props) => {
   //
 
   const clickUsernameBth = () => {
+    setDisplayDetails(user.username);
     setChoice("username");
     setChoiceValue("");
     setPassword("");
+    console.log(displayDetails);
   };
   const clickPasswordBth = () => {
+    setDisplayDetails(user.username);
     setChoice("password");
     setChoiceValue("");
     setPassword("");
+    console.log(displayDetails);
   };
   const clickEmailBth = () => {
+    setDisplayDetails(user.email);
     setChoice("email");
     setChoiceValue("");
     setPassword("");
+    console.log(displayDetails);
   };
 
   return (
@@ -73,6 +82,8 @@ export const UserSettings = (props) => {
             </button>
           </div>
           <EditInput
+            displayDetails={displayDetails}
+            setDisplayDetails={setDisplayDetails}
             choice={choice}
             setChoice={setChoice}
             choiceValue={choiceValue}
