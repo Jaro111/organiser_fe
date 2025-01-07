@@ -122,19 +122,20 @@ export const JobCentre = (props) => {
         owner={owner}
         setJobDeleteData={props.setJobDeleteData}
       />
-      <div className="jobCentre-jobTitle-wrapper">
-        {props.jobs.length > 0 && props.mainJobId ? (
+      {props.jobs.length > 0 && props.mainJobId ? (
+        <div className="jobCentre-jobTitle-wrapper">
           <p className="jobCentre-jobTitle">{props.jobTitle}</p>
-        ) : null}
-        <div className="userPanel-icon-wrapper">
-          <BsCart4
-            onClick={() => {
-              setIsshopingModalVisible(!isShopingModalVisible);
-            }}
-            className="cartIcon"
-          />
+
+          <div className="userPanel-icon-wrapper">
+            <BsCart4
+              onClick={() => {
+                setIsshopingModalVisible(!isShopingModalVisible);
+              }}
+              className="cartIcon"
+            />
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div className="users-wrapper">
         {props.jobs.length > 0

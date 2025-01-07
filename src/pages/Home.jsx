@@ -9,9 +9,7 @@ export const Home = ({ numberOfInv, setNumberOfInv }) => {
     <>
       {user.username ? (
         <MainCentre numberOfInv={numberOfInv} setNumberOfInv={setNumberOfInv} />
-      ) : (
-        <p>Not Logged</p>
-      )}
+      ) : null}
     </>
   );
 };

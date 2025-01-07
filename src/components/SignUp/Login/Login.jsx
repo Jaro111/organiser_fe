@@ -21,7 +21,6 @@ export const LogIn = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await logIn(username, password);
-    console.log(data);
     setUser(data);
     props.setIsmodalSignInVisible(false);
     navigate("/");
