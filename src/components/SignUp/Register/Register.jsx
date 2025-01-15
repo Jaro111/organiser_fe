@@ -17,7 +17,9 @@ export const Register = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await signUp(username, email, password);
-    if (data.message === "Username or email already registered") {
+    console.log(data.message);
+
+    if (data.message.includes("username") || data.message.includes("email")) {
       props.setRegisterMessage("Username or email already registered");
     }
     if (emailCheck(email)) {

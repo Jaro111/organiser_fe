@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useContext, useEffect } from "react";
 import { getJobById, editShopingList } from "../../utils/job";
 import { AddToListPanel } from "./AddToListPanel/AddToListPanel";
+import Cookies from "js-cookie";
 import { IoMdClose } from "react-icons/io";
 import { IoCheckmarkOutline } from "react-icons/io5";
 import { MdOutlineCancel } from "react-icons/md";
@@ -25,10 +26,13 @@ export const ShopingListModal = (props) => {
   const [currentUser, setCurrentUser] = useState("");
   //
   const getJob = async () => {
-    const data = await getJobById(props.jobId, user.token);
-    setShopingLIst(data.job.shopingList.sort((a, b) => a.status - b.status));
-    setShopingLIstTitle(data.job.title);
-    setShopingListLength(data.job.shopingList.length);
+    if (props.jobTitle) {
+      const data = await getJobById(props.jobId, user.token);
+      console.log(data);
+      setShopingLIst(data.job.shopingList.sort((a, b) => a.status - b.status));
+      setShopingLIstTitle(data.job.title);
+      setShopingListLength(data.job.shopingList.length);
+    }
   };
 
   //change status
@@ -60,16 +64,22 @@ export const ShopingListModal = (props) => {
     setShopingListLength(0);
   };
 
+  const closeShopingModal = () => {
+    props.setIsshopingModalVisible(false);
+    document.cookie =
+      "shopingModal=; expires= Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  };
+
   useEffect(() => {
     getJob();
-  }, [shopingListLength, itemStatus, props.jobData]);
+  }, [shopingListLength, itemStatus, props.jobData, props.jobTitle]);
 
   return (
     <div className="shopingListModal">
       <div className="closeShopingModal-wrapper">
         <IoMdClose
           onClick={() => {
-            props.setIsshopingModalVisible(false);
+            closeShopingModal();
           }}
           className="closeShopingModal-icon"
         />
@@ -89,7 +99,7 @@ export const ShopingListModal = (props) => {
           setShopingListLength={setShopingListLength}
         />
         <div className="shopingItems-wrapper">
-          {shopingListLength > 0
+          {shopingListLength > 0 && props.jobTitle
             ? shopingList.map((item, index) => {
                 return (
                   <div className="shopingListItem-wrapper" key={index}>

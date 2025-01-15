@@ -68,7 +68,7 @@ export const SearchBar = (props) => {
           onChange={(e) => handleChange(e)}
           value={searchInput}
         ></input>
-        {suggestionslength > 0 && (
+        {suggestionslength > 0 && jobId && (
           <SuggestionList
             suggestions={suggestions}
             jobId={jobId}

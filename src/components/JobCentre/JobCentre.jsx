@@ -1,7 +1,8 @@
 import React from "react";
 import { getJobDetils } from "../../utils/job";
 import { ShopingListModal } from "../ShopingListModal/ShopingListModal";
-import { connectSocket, disconnectSocket } from "../../common/socket";
+import { connectSocket } from "../../common/socket";
+import Cookies from "js-cookie";
 import { BsCart4 } from "react-icons/bs";
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../common/context";
@@ -69,6 +70,22 @@ export const JobCentre = (props) => {
     } else {
       null;
     }
+    if (document.cookie.includes("shopingModal")) {
+      let condition = Cookies.get("shopingModal");
+      setIsshopingModalVisible(condition);
+      console.log(condition);
+    } else {
+      // setIsshopingModalVisible(isShopingModalVisible);
+      console.log("No cookie");
+    }
+  };
+
+  const openShopingModal = () => {
+    setIsshopingModalVisible(!isShopingModalVisible);
+    Cookies.set("shopingModal", true, {
+      expires: 7,
+      path: "/",
+    });
   };
 
   useEffect(() => {
@@ -129,7 +146,7 @@ export const JobCentre = (props) => {
           <div className="userPanel-icon-wrapper">
             <BsCart4
               onClick={() => {
-                setIsshopingModalVisible(!isShopingModalVisible);
+                openShopingModal();
               }}
               className="cartIcon"
             />
@@ -170,6 +187,7 @@ export const JobCentre = (props) => {
           colors={colors}
           jobData={props.jobData}
           setJobData={props.setJobData}
+          jobTitle={props.jobTitle}
         />
       )}
     </div>
