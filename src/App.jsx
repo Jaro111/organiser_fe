@@ -10,6 +10,7 @@ import { ResetPassword } from "./pages/ResetPassword";
 import { ResetPasswordRequest } from "./pages/ResetPasswordRequest";
 import { Notifications } from "./pages/Notifications";
 import "./App.css";
+const url = import.meta.env.VITE_URL;
 
 function App() {
   const [user, setUser] = useState({});
