@@ -2,7 +2,7 @@ import React from "react";
 import { resetPassword } from "../../utils/user";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "./resetPasswordRequestForm.css";
+import "./ResetPasswordRequestForm.css";
 
 export const ResetPasswordRequestForm = () => {
   const { token } = useParams();
