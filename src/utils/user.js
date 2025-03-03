@@ -1,11 +1,11 @@
 import Cookies from "js-cookie";
 
 const url = import.meta.env.VITE_URL;
+console.log(url);
 
 // sign Up
 
 export const signUp = async (username, email, password) => {
-  console.log(url);
   const res = await fetch(`${url}/user/addUser`, {
     method: "POST",
     mode: "cors",
@@ -105,6 +105,7 @@ export const sendResetLink = async (email) => {
       email: email,
     }),
   });
+  console.log(url);
 
   const data = await res.json();
 
