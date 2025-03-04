@@ -1,6 +1,19 @@
 .StartUpCentre {
   margin-top: 70px;
-  width: 90%;
+  width: 96%;
   height: fit-content;
-  border: 1px solid red;
+}
+
+.startUpImageContent {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 900;
+  background-color: blueviolet;
+  color: rgb(236, 194, 241);
+}
+
+.startUpImage {
+  width: 100%;
+  height: auto;
 }
