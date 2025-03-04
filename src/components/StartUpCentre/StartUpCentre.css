@@ -10,7 +10,12 @@
   font-size: 20px;
   font-weight: 900;
   background-color: blueviolet;
-  color: rgb(236, 194, 241);
+  color: rgb(240, 216, 243);
+}
+
+.startupImageContainer {
+  border: 2px solid grey;
+  margin-bottom: 10px;
 }
 
 .startUpImage {

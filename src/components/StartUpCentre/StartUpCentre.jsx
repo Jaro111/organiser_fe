@@ -36,7 +36,7 @@ export const StartUpCentre = () => {
     <div className="StartUpCentre">
       {picturesContent.map((item, index) => {
         return (
-          <div key={index}>
+          <div className="startupImageContainer" key={index}>
             <p className="startUpImageContent">{item}</p>
             {/* <p>{returnImageFunction(index + 1)}</p> */}
             <img
