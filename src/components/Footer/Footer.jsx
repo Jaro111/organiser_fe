@@ -3,8 +3,10 @@ import "./Footer.css";
 export const Footer = () => {
   return (
     <div className="footer-wrapper">
-      {/* <p>https://github.com/Jaro111</p>
-      <p>jarokark@protonmail.com</p> */}
+      <a className="footerLink" href="https://github.com/Jaro111">
+        <p>https://github.com/Jaro111</p>
+      </a>
+      <p>jarokark@protonmail.com</p>
     </div>
   );
 };
