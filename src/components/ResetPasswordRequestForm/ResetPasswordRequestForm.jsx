@@ -1,4 +1,3 @@
-import React from "react";
 import { resetPassword } from "../../utils/user";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
